@@ -9,6 +9,7 @@ import com.jogamp.opengl.util.gl2.GLUT;
 
 public class MyGLEventListener implements GLEventListener {
 
+	
 
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -62,6 +63,7 @@ public class MyGLEventListener implements GLEventListener {
 
         gl.glRotatef(5, 0, 1, 0);
         glut.glutWireTeapot(5);
+        aile.rendre(gl);
 
     }
 
