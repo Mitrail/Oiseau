@@ -8,6 +8,7 @@ import com.jogamp.opengl.util.gl2.GLUT;
 
 public class MyGLEventListener implements GLEventListener {
 
+
 	@Override
 	public void init(GLAutoDrawable drawable) {
 
@@ -47,6 +48,9 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 		gl.glLoadIdentity();
 		glu.gluLookAt(camera[0], camera[1], camera[2], 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+        gl.glRotatef(5, 0, 1, 0);
+        glut.glutWireTeapot(5);
+        //aile.rendre(gl);
 
 		gl.glColor3f(0.0f, 0.0f, 1.0f);
 
