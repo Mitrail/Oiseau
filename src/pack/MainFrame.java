@@ -8,60 +8,48 @@ import com.jogamp.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 import com.jogamp.opengl.util.FPSAnimator;
 
-
-
 public class MainFrame extends JFrame {
 
+	public MainFrame() {
 
+		setTitle("Un peu de JOGL");
 
-        public MainFrame(){
+		setSize(640, 480);
 
-            setTitle("Un peu de JOGL");
+		// Définit les critères que le contexte du rendu doit supporter
+		// Si la machine ne peut rendre ce que l'on attend d'elle, une extension
+		// sera levée
+		GLCapabilities glCapabilities = new GLCapabilities(GLProfile.getDefault());
 
-            setSize(640, 480);
+		// Création du canvas OpenGL
+		// Support du dessin
+		GLCanvas glCanvas = new GLCanvas(glCapabilities);
 
+		Corps glListener = new Corps();
 
-            //Définit les critères que le contexte du rendu doit supporter
-            //Si la machine ne peut rendre ce que l'on attend d'elle, une extension
-            //sera levée
-            GLCapabilities glCapabilities = new GLCapabilities(GLProfile.getDefault());
+		// Callback attachée à la surface dessinable
+		glCanvas.addGLEventListener(glListener);
 
-            //Création du canvas OpenGL
-            //Support du dessin
-            GLCanvas glCanvas = new GLCanvas(glCapabilities);
+		// Surface dessinable attachée à la fenêtre
+		add(glCanvas);
 
+		// Création de l'animator
+		final FPSAnimator animator = new FPSAnimator(glCanvas, 60);
 
-            MyGLEventListener glListener = new MyGLEventListener();
+		// Gestion de la fermeture de la fenêtre
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				animator.stop();
+				System.exit(0);
+			}
+		});
 
-            //Callback attachée à la surface dessinable
-            glCanvas.addGLEventListener(glListener);
+		// Démarrage de l'animator qui se charge d'appeler la fonction display()
+		animator.start();
 
-            //Surface dessinable attachée à la fenêtre
-            add(glCanvas);
+	}
 
-            //Création de l'animator
-            final FPSAnimator animator = new FPSAnimator(glCanvas, 60);
+	private static final long serialVersionUID = -1227038124975588633L;
 
-
-            //Gestion de la fermeture de la fenêtre
-            addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    animator.stop();
-                    System.exit(0);
-                }
-            });
-
-
-            //Démarrage de l'animator qui se charge d'appeler la fonction display()
-            animator.start();
-
-        }
-
-
-
-        private static final long serialVersionUID = -1227038124975588633L;
-
-
-
-    }
+}
