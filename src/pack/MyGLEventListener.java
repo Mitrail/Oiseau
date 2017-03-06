@@ -8,6 +8,7 @@ import com.jogamp.opengl.util.gl2.GLUT;
 
 public class MyGLEventListener implements GLEventListener {
 
+	private Oiseau o = new Oiseau(0,0,0);
 
 	@Override
 	public void init(GLAutoDrawable drawable) {
@@ -32,7 +33,7 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glMateriali(GL2.GL_FRONT_AND_BACK, GL2.GL_SHININESS, 90);
 
 		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, material_specular, 0);
-
+		
 	}
 
 	@Override
@@ -48,14 +49,10 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 		gl.glLoadIdentity();
 		glu.gluLookAt(camera[0], camera[1], camera[2], 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-        gl.glRotatef(5, 0, 1, 0);
-        glut.glutWireTeapot(5);
-        //aile.rendre(gl);
 
-		gl.glColor3f(0.0f, 0.0f, 1.0f);
-
-		gl.glRotatef(5, 0, 1, 0);
-		glut.glutWireTeapot(5);
+		System.out.println("rnder1");
+		o.render(gl);
+		System.out.println("rnder2");
 
 	}
 
@@ -69,6 +66,7 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glLoadIdentity();
 		glu.gluPerspective(60.0f, (float) width / height, 0.1f, 100.0f);
 		gl.glMatrixMode(GL2.GL_MODELVIEW);
+		
 
 	}
 

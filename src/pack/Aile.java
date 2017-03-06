@@ -14,8 +14,8 @@ public class Aile implements InterfaceCorps{
 	
 	
 	private Oiseau oiseau; 
-	private ArrayList<Triangles> troncon1;
-	private ArrayList<Triangles> troncon2;
+	private ArrayList<Triangle> tronc1 = new ArrayList<Triangle>();
+	private ArrayList<Triangle> tronc2 = new ArrayList<Triangle>();
 	
 	
 	/**
@@ -26,20 +26,18 @@ public class Aile implements InterfaceCorps{
 	public Aile(boolean b, Oiseau o){
 		this.oiseau = o;
 		
-	
-		
 		
 	}
 	
 	/**
-	 * 
+	 * Applique une rotation autour du centre a l'ensemble des points de la structure
 	 */
 	public void rotate(float angle,float x, float y, float z){
 		
 	}
 	
 	/**
-	 * 
+	 * Deplace l'ensemble des points de la structure
 	 */
 	public void move(float x, float y, float z){
 		
@@ -50,7 +48,9 @@ public class Aile implements InterfaceCorps{
 	 * @param gl l'objet effectuant les positionnement des points
 	 */
 	public void render(GL2 gl){
-		
+		for(Triangle i : tronc1){
+			i.render(gl);
+		}
 	}
 	
 	/**

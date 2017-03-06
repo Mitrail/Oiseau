@@ -23,7 +23,7 @@ public class Oiseau {
 	private float y;
 	private float z;
 	
-	private Oiseau(float x, float y, float z){
+	public Oiseau(float x, float y, float z){
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -38,7 +38,11 @@ public class Oiseau {
 	 * @param gl l'objet placant les points
 	 */
 	public void render(GL2 gl){
-		
+		System.out.println("encore un render");
+		for(InterfaceCorps i : membres){
+			System.out.println("rndr1");
+			i.render(gl);
+		}
 	}
 	
 	
