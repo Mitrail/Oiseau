@@ -13,18 +13,19 @@ import com.jogamp.opengl.GL2;
 public class Queue implements InterfaceCorps{
 
 	private Oiseau oiseau; 
-	private ArrayList<Triangle> pDroite;
-	private ArrayList<Triangle> pGauche;
-	private float top = 2.5f;
-	private float bottom = -2.5f; 
-	private float left = -2.5f;
-	private float right = 2.5f;
+	private ArrayList<Triangle> pDroite = new ArrayList<Triangle>();
+	private ArrayList<Triangle> pGauche = new ArrayList<Triangle>();
+	private float coef = 1.1f;
+	private float top = 2.5f*coef;
+	private float bottom = -2.5f*coef; 
+	private float left = -2.5f*coef;
+	private float right = 2.5f*coef;
 	
-	private float mid = 0;
-	private float end = -5.0f;
-	private float beg = 0;
-	private float alignRight = -1.25f;
-	private float aligneLeft = 1.25f;
+	private float mid = 0 * coef;
+	private float end = -5.0f*coef;
+	private float beg = 0*coef;
+	private float alignRight = -1.25f*coef;
+	private float aligneLeft = 1.25f*coef;
 	
 	
 	/**

@@ -16,8 +16,8 @@ public class Triangle {
 	}
 	
 	
+	
 	public void render(GL2 gl){
-		System.out.println("rndr");
 		gl.glBegin(GL.GL_TRIANGLES);
 		gl.glVertex3f(p1.getX(),p1.getY(),p1.getZ());
 		gl.glVertex3f(p2.getX(),p2.getY(),p2.getZ());

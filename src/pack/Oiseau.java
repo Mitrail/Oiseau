@@ -3,6 +3,10 @@ package pack;
 import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GLAutoDrawable;
+import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.util.gl2.GLUT;
 
 /**
  * 
@@ -12,11 +16,6 @@ import com.jogamp.opengl.GL2;
  */
 public class Oiseau {
 
-	private Aile aileD;
-	private Aile aileG;
-	//Corps corps;
-	//Tete tete;
-	//Queue queue;
 	private ArrayList<InterfaceCorps> membres = new ArrayList<InterfaceCorps>();
 	
 	private float x;
@@ -31,6 +30,7 @@ public class Oiseau {
 		membres.add(new Aile(false, this));
 		membres.add(new Aile(true,this));
 		membres.add(new Queue(this));
+		membres.add(new Corps(this));
 	}
 	
 	/**
@@ -38,9 +38,7 @@ public class Oiseau {
 	 * @param gl l'objet placant les points
 	 */
 	public void render(GL2 gl){
-		System.out.println("encore un render");
 		for(InterfaceCorps i : membres){
-			System.out.println("rndr1");
 			i.render(gl);
 		}
 	}
@@ -76,6 +74,9 @@ public class Oiseau {
 		return z;
 	}
 	
+	
+
+
 	
 	
 	

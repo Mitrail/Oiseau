@@ -1,6 +1,8 @@
 package pack;
 
+import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL2GL3;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
@@ -9,6 +11,14 @@ import com.jogamp.opengl.util.gl2.GLUT;
 public class MyGLEventListener implements GLEventListener {
 
 	private Oiseau o = new Oiseau(0,0,0);
+	
+	float modx = 0.0f;
+	float mody = 0.0f;
+	float modz = 0.0f;
+	
+	float modPosx = 0.0f;
+	float modPosy = 0.0f;
+	float modPosz = 0.0f;
 
 	@Override
 	public void init(GLAutoDrawable drawable) {
@@ -35,6 +45,18 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, material_specular, 0);
 		
 	}
+	
+	public void updateAngleCam(float x, float y, float z){
+		modx += x;
+		mody += y;
+		modz += z;
+	}
+	
+	public void updatePosCam(float x, float y, float z){
+		modPosx += x;
+		modPosy += y;
+		modPosz += z;
+	}
 
 	@Override
 	public void dispose(GLAutoDrawable drawable) {
@@ -48,11 +70,15 @@ public class MyGLEventListener implements GLEventListener {
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 		gl.glLoadIdentity();
-		glu.gluLookAt(camera[0], camera[1], camera[2], 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-
-		System.out.println("rnder1");
+		//glu.gluLookAt(camera[0], camera[1], camera[2], 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		glu.gluLookAt(
+                camera[0]+modPosx, camera[1]+modPosy, camera[2]+modPosz,
+                modx, mody, modz,
+                0.0f, 1.0f, 0.0f
+        );
+		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
+		gl.glColor3f(1.0f, 0.0f, 0.0f);
 		o.render(gl);
-		System.out.println("rnder2");
 
 	}
 

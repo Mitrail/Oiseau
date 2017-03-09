@@ -17,6 +17,13 @@ public class Aile implements InterfaceCorps{
 	private ArrayList<Triangle> tronc1 = new ArrayList<Triangle>();
 	private ArrayList<Triangle> tronc2 = new ArrayList<Triangle>();
 	
+	private float s1top;
+	private float s1bottom;
+	private float s1front;
+	private float s1rear;
+	private float s1close;
+	private float s1far;
+	
 	
 	/**
 	 * 
