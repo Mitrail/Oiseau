@@ -22,6 +22,22 @@ public class Point3D {
 		return "Coordonées du point = (" + x + "," + y + "," + z + ")";
 	}
 
+	public Point3D clone() {
+		return new Point3D(this.x, this.y, this.z);
+	}
+
+	public void moveX(float x) {
+		this.x += x;
+	}
+
+	public void moveY(float y) {
+		this.y += y;
+	}
+
+	public void moveZ(float z) {
+		this.z += z;
+	}
+
 	public float getX() {
 		return x;
 	}
