@@ -56,6 +56,9 @@ public class MyGLEventListener implements GLEventListener {
 		modPosx += x;
 		modPosy += y;
 		modPosz += z;
+		modx += x;
+		mody += y;
+		modz += z;
 	}
 
 	@Override
@@ -78,6 +81,7 @@ public class MyGLEventListener implements GLEventListener {
         );
 		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
+		
 		o.render(gl);
 
 	}

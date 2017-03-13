@@ -3,6 +3,7 @@ package pack;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
@@ -10,7 +11,7 @@ import com.jogamp.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 import com.jogamp.opengl.util.FPSAnimator;
 
-public class MainFrame extends JFrame implements KeyListener{
+public class MainFrame extends JFrame{
 
 	public MainFrame() {
 
@@ -65,16 +66,16 @@ public class MainFrame extends JFrame implements KeyListener{
                 }
                 
                 
-                if (e.getKeyChar() == 'l') {
+                if (e.getKeyChar() == 'm') {
                     glListener.updatePosCam(1.0f,0.0f,0.0f);
                 }
                 if (e.getKeyChar() == 'k') {
-                    glListener.updatePosCam(0.0f,0.0f,0.0f);
-                }
-                if (e.getKeyChar() == 'o') {
                     glListener.updatePosCam(-1.0f,0.0f,0.0f);
                 }
-                if (e.getKeyChar() == 'm') {
+                if (e.getKeyChar() == 'o') {
+                    glListener.updatePosCam(0.0f,0.0f,-1.0f);
+                }
+                if (e.getKeyChar() == 'l') {
                     glListener.updatePosCam(0.0f,0.0f,1.0f);
                 }
             }
@@ -101,5 +102,6 @@ public class MainFrame extends JFrame implements KeyListener{
 	}
 
 	private static final long serialVersionUID = -1227038124975588633L;
+
 
 }
