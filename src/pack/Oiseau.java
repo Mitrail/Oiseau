@@ -27,8 +27,8 @@ public class Oiseau {
 		this.y = y;
 		this.z = z;
 		
-		membres.add(new Aile(false, this));
-		membres.add(new Aile(true,this));
+		membres.add(new AileG(this));
+		membres.add(new AileD(this));
 		membres.add(new Queue(this));
 		membres.add(new Corps(this));
 	}
