@@ -78,6 +78,10 @@ public class MainFrame extends JFrame{
                 if (e.getKeyChar() == 'l') {
                     glListener.updatePosCam(0.0f,0.0f,1.0f);
                 }
+                
+                if (e.getKeyChar() == 'a') {
+                    glListener.o.move(0.0f, 0.1f, 0.0f);
+                }
             }
         });
 
