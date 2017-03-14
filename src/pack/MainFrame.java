@@ -11,30 +11,26 @@ import com.jogamp.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 import com.jogamp.opengl.util.FPSAnimator;
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
 
 	public MainFrame() {
 
-		setTitle("Un peu de JOGL");
-
+		setTitle("Oiseau 3D");
 		setSize(640, 480);
 
-		// Dï¿½finit les critï¿½res que le contexte du rendu doit supporter
-		// Si la machine ne peut rendre ce que l'on attend d'elle, une extension
-		// sera levï¿½e
+		// Définit les critères que le contexte du rendu doit supporter
+		// Si la machine ne peut rendre ce que l'on attend d'elle, une exception
+		// sera levée
 		GLCapabilities glCapabilities = new GLCapabilities(GLProfile.getDefault());
 
-		// Crï¿½ation du canvas OpenGL
-		// Support du dessin
+		// Création du canvas OpenGL. Support du dessin
 		GLCanvas glCanvas = new GLCanvas(glCapabilities);
-
 		MyGLEventListener glListener = new MyGLEventListener();
 		
-		
-
-		// Callback attachï¿½e ï¿½ la surface dessinable
+		// Callback attaché à la surface dessinable
 		glCanvas.addGLEventListener(glListener);
 
+		// Ajout d'un KeyListener sur le canvas
         glCanvas.addKeyListener(new java.awt.event.KeyListener() {
 
             @Override
