@@ -19,7 +19,7 @@ public class Triangle {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.p3 = p3;
-	}	
+	}
 	
 	public void render(GL2 gl){
 		gl.glBegin(GL.GL_TRIANGLES);

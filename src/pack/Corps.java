@@ -8,45 +8,95 @@ import com.jogamp.opengl.GL2;
 
 public class Corps implements InterfaceCorps {
 	
-	public final Point3D // Points de la face avant
-	pAvantHautGauche = new Point3D(-1.0f,1.0f,-2.0f),
-	pAvantHautDroit = new Point3D(1.0f,1.0f,-2.0f),
-	pAvantBasGauche = new Point3D(-1.0f,-1.0f,-2.0f),
-	pAvantBasDroit = new Point3D(1.0f,-1.0f,-2.0f),
+	// position haut-bas, gauche-droite, avant-arrière
+	private final float top = 1.5f,bottom = -1.5f,right = 2.5f,left = -2.5f,front = 5.0f,back = -5.0f;
+	
+	private Point3D 
+	// Points de la face avant
+	pAvantHautGauche = new Point3D(front,top,left),
+	pAvantHautDroit = new Point3D(front,top,right),
+	pAvantBasGauche = new Point3D(front,bottom,left),
+	pAvantBasDroit = new Point3D(front,bottom,right),
 	
 	// Points de la face arrière
-	pArriereHautGauche = new Point3D(-1.0f,1.0f,2.0f),
-	pArriereHautDroit = new Point3D(1.0f,1.0f,2.0f),
-	pArriereBasGauche = new Point3D(-1.0f,-1.0f,2.0f),
-	pArriereBasDroit = new Point3D(1.0f,-1.0f,2.0f);
+	pArriereHautGauche = new Point3D(back,top,left),
+	pArriereHautDroit = new Point3D(back,top,right),
+	pArriereBasGauche = new Point3D(back,bottom,left),
+	pArriereBasDroit = new Point3D(back,bottom,right);
 	
 	private Oiseau o;
-	private List<Point3D> listePoints = new ArrayList<Point3D>();
+	private List<Point3D> listePoints;
 	
 	public Corps(Oiseau o){
 		this.o = o;
-		listePoints.add(pAvantBasDroit.clone());
-		listePoints.add(pAvantHautDroit.clone());
-		listePoints.add(pAvantBasGauche.clone());
-		listePoints.add(pAvantBasDroit.clone());
-		listePoints.add(pArriereHautGauche.clone());
-		listePoints.add(pArriereHautDroit.clone());
-		listePoints.add(pArriereBasGauche.clone());
-		listePoints.add(pArriereBasDroit.clone());
+		listePoints = new ArrayList<Point3D>();
+		listePoints.add(pAvantHautDroit);
+		listePoints.add(pAvantHautGauche);
+		listePoints.add(pAvantBasGauche);
+		listePoints.add(pAvantBasDroit);
+		listePoints.add(pArriereHautGauche);
+		listePoints.add(pArriereHautDroit);
+		listePoints.add(pArriereBasGauche);
+		listePoints.add(pArriereBasDroit);
 	}
 	
-	public void afficherPoints() {
-				
-	}
 
 	@Override
 	public void render(GL2 gl) {
 		
-//		gl.glBegin(GL.GL_TRIANGLES);
-//		gl.glVertex3f(p1.getX(),p1.getY(),p1.getZ());
-//		gl.glVertex3f(p2.getX(),p2.getY(),p2.getZ());
-//		gl.glVertex3f(p3.getX(),p3.getY(),p3.getZ());
-//		gl.glEnd();
+		gl.glColor3f(1.0f, 0.0f, 0.0f); // RED 
+		
+		// Face avant
+		gl.glBegin(gl.GL_QUADS);
+		gl.glVertex3f(pAvantHautDroit.getX(),pAvantHautDroit.getY(),pAvantHautDroit.getZ()); // pt0
+		gl.glVertex3f(pAvantBasDroit.getX(),pAvantBasDroit.getY(),pAvantBasDroit.getZ()); // pt0
+		gl.glVertex3f(pAvantBasGauche.getX(),pAvantBasGauche.getY(),pAvantBasGauche.getZ()); // pt0
+		gl.glVertex3f(pAvantHautGauche.getX(),pAvantHautGauche.getY(),pAvantHautGauche.getZ()); // pt0
+		gl.glEnd();
+		
+		// Face arrière
+		gl.glBegin(gl.GL_QUADS);
+		gl.glVertex3f(pArriereHautDroit.getX(),pArriereHautDroit.getY(),pArriereHautDroit.getZ()); // pt0
+		gl.glVertex3f(pArriereHautGauche.getX(),pArriereHautGauche.getY(),pArriereHautGauche.getZ()); // pt0
+		gl.glVertex3f(pArriereBasGauche.getX(),pArriereBasGauche.getY(),pArriereBasGauche.getZ()); // pt0
+		gl.glVertex3f(pArriereBasDroit.getX(),pArriereBasDroit.getY(),pArriereBasDroit.getZ()); // pt0
+		gl.glEnd();
+		
+		gl.glColor3f(0.0f, 1.0f, 0.0f); // GREEN
+		
+		// Face haut
+		gl.glBegin(gl.GL_QUADS);
+		gl.glVertex3f(pAvantHautDroit.getX(),pAvantHautDroit.getY(),pAvantHautDroit.getZ()); // pt0
+		gl.glVertex3f(pAvantHautGauche.getX(),pAvantHautGauche.getY(),pAvantHautGauche.getZ()); // pt0
+		gl.glVertex3f(pArriereHautGauche.getX(),pArriereHautGauche.getY(),pArriereHautGauche.getZ()); // pt0
+		gl.glVertex3f(pArriereHautDroit.getX(),pArriereHautDroit.getY(),pArriereHautDroit.getZ()); // pt0
+		gl.glEnd();
+
+		// Face bas
+		gl.glBegin(gl.GL_QUADS);
+		gl.glVertex3f(pArriereBasDroit.getX(),pArriereBasDroit.getY(),pArriereBasDroit.getZ()); // pt0
+		gl.glVertex3f(pArriereBasGauche.getX(),pArriereBasGauche.getY(),pArriereBasGauche.getZ()); // pt0
+		gl.glVertex3f(pAvantBasGauche.getX(),pAvantBasGauche.getY(),pAvantBasGauche.getZ()); // pt0
+		gl.glVertex3f(pAvantBasDroit.getX(),pAvantBasDroit.getY(),pAvantBasDroit.getZ()); // pt0
+		gl.glEnd();
+		
+		gl.glColor3f(0.0f, 0.0f, 1.0f); // BLUE
+
+		// Face gauche
+		gl.glBegin(gl.GL_QUADS);
+		gl.glVertex3f(pArriereHautGauche.getX(),pArriereHautGauche.getY(),pArriereHautGauche.getZ()); // pt0
+		gl.glVertex3f(pAvantHautGauche.getX(),pAvantHautGauche.getY(),pAvantHautGauche.getZ()); // pt0
+		gl.glVertex3f(pAvantBasGauche.getX(),pAvantBasGauche.getY(),pAvantBasGauche.getZ()); // pt0
+		gl.glVertex3f(pArriereBasGauche.getX(),pArriereBasGauche.getY(),pArriereBasGauche.getZ()); // pt0
+		gl.glEnd();
+
+		// Face droite
+		gl.glBegin(gl.GL_QUADS);
+		gl.glVertex3f(pAvantHautDroit.getX(),pAvantHautDroit.getY(),pAvantHautDroit.getZ()); // pt0
+		gl.glVertex3f(pArriereHautDroit.getX(),pArriereHautDroit.getY(),pArriereHautDroit.getZ()); // pt0
+		gl.glVertex3f(pArriereBasDroit.getX(),pArriereBasDroit.getY(),pArriereBasDroit.getZ()); // pt0
+		gl.glVertex3f(pAvantBasDroit.getX(),pAvantBasDroit.getY(),pAvantBasDroit.getZ()); // pt0
+		gl.glEnd();
 		
 	}
 
@@ -58,7 +108,10 @@ public class Corps implements InterfaceCorps {
 
 	@Override
 	public void move(float x, float y, float z) {
-		// TODO Auto-generated method stub
-		
+		for (Point3D p : listePoints) {
+			p.moveX(x);
+			p.moveY(y);
+			p.moveZ(z);
+		}
 	}
 }
