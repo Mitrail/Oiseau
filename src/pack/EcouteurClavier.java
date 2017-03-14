@@ -39,6 +39,9 @@ public class EcouteurClavier implements KeyListener {
 		if (e.getKeyChar() == 'l') {
 			glListener.updatePosCam(0.0f, 0.0f, 1.0f);
 		}
+		if (e.getKeyChar() == 'p') {
+			glListener.updatePosCam(0.0f, 0.0f, -1.0f);
+		}
 		
 	}
 
