@@ -8,7 +8,7 @@ import com.jogamp.opengl.GL2;
 
 public class Corps implements InterfaceCorps {
 	
-	// position haut-bas, gauche-droite, avant-arrière
+	// position haut-bas, gauche-droite, avant-arriï¿½re
 	private final float top = 1.5f,bottom = -1.5f,right = 2.5f,left = -2.5f,front = 5.0f,back = -5.0f;
 	
 	private Point3D 
@@ -18,7 +18,7 @@ public class Corps implements InterfaceCorps {
 	pAvantBasGauche = new Point3D(front,bottom,left),
 	pAvantBasDroit = new Point3D(front,bottom,right),
 	
-	// Points de la face arrière
+	// Points de la face arriï¿½re
 	pArriereHautGauche = new Point3D(back,top,left),
 	pArriereHautDroit = new Point3D(back,top,right),
 	pArriereBasGauche = new Point3D(back,bottom,left),
@@ -54,7 +54,7 @@ public class Corps implements InterfaceCorps {
 		gl.glVertex3f(pAvantHautGauche.getX(),pAvantHautGauche.getY(),pAvantHautGauche.getZ()); // pt0
 		gl.glEnd();
 		
-		// Face arrière
+		// Face arriï¿½re
 		gl.glBegin(gl.GL_QUADS);
 		gl.glVertex3f(pArriereHautDroit.getX(),pArriereHautDroit.getY(),pArriereHautDroit.getZ()); // pt0
 		gl.glVertex3f(pArriereHautGauche.getX(),pArriereHautGauche.getY(),pArriereHautGauche.getZ()); // pt0

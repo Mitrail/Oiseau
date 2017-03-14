@@ -11,6 +11,8 @@ import com.jogamp.opengl.util.gl2.GLUT;
 public class MyGLEventListener implements GLEventListener {
 
 	private Oiseau o = new Oiseau(0,0,0);
+	private Oiseau o2 = new Oiseau(-25,0,-25);
+	private Oiseau o3 = new Oiseau(25,0,-25);
 	
 	float modx = 0.0f;
 	float mody = 0.0f;
@@ -81,8 +83,10 @@ public class MyGLEventListener implements GLEventListener {
         );
 		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
-		
+
 		o.render(gl);
+		o2.render(gl);
+		o3.render(gl);
 
 	}
 
