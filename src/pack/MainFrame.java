@@ -29,10 +29,10 @@ public class MainFrame extends JFrame {
 		
 		// Callback attaché à la surface dessinable
 		glCanvas.addGLEventListener(glListener);
-		
+		/*
 		// Ajout d'un KeyListener sur le canvas
 		glCanvas.addKeyListener(new EcouteurClavier(glListener));
-
+		 */
 		// Surface dessinable attachï¿½e ï¿½ la fenï¿½tre
 		add(glCanvas);
 
