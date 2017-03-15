@@ -28,5 +28,34 @@ public class Triangle {
 		gl.glVertex3f(p3.getX(),p3.getY(),p3.getZ());
 		gl.glEnd();
 	}
+	
+	public void render(GL2 gl, Oiseau o){
+		gl.glBegin(GL.GL_TRIANGLES);
+		gl.glVertex3f(p1.getX()+o.getX(),p1.getY()+o.getY(),p1.getZ()+o.getZ());
+		gl.glVertex3f(p2.getX()+o.getX(),p2.getY()+o.getY(),p2.getZ()+o.getZ());
+		gl.glVertex3f(p3.getX()+o.getX(),p3.getY()+o.getY(),p3.getZ()+o.getZ());
+		gl.glEnd();
+	}
+	
+	
+	/**
+	 * @deprecated
+	 */
+	public void move(float x, float y, float z){
+		p1.setPos(x, y, z);
+		p2.setPos(x, y, z);
+		p3.setPos(x, y, z);
+	}
+	
+	public void update(float x,float y, float z){
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Triangle [p1=" + p1.getX() + ", p2=" + p1.getY() + ", p3=" + p1.getZ() + "]";
+	}
+	
+	
 
 }

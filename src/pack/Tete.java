@@ -3,6 +3,7 @@ package pack;
 import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.util.gl2.GLUT;
 
 /**
  * Represente la queue de l'oiseau en deux parties, droite et gauche
@@ -10,11 +11,11 @@ import com.jogamp.opengl.GL2;
  * @author mitrail
  *
  */
-public class Queue implements InterfaceCorps {
+public class Tete implements InterfaceCorps {
 
 	private Oiseau oiseau;
-	private ArrayList<Triangle> pDroite = new ArrayList<Triangle>();
-	private ArrayList<Triangle> pGauche = new ArrayList<Triangle>();
+	private ArrayList<Triangle> listeTri = new ArrayList<Triangle>();
+
 	private float coef = 1.0f;
 
 	// haut/bas
@@ -31,43 +32,24 @@ public class Queue implements InterfaceCorps {
 	private float beg = 0 * coef;
 	// centre
 	private float mid = 0 * coef;
-	
-	
-	
-	
+
+	private float centre = 10.0f;
+
+	private GLUT glut = new GLUT();
 
 	/**
 	 * 
 	 * @param o
 	 *            Oiseau objet central
 	 */
-	public Queue(Oiseau o) {
+	public Tete(Oiseau o) {
 		this.oiseau = o;
-		Point3D topLeft = new Point3D(oiseau.getX() + left, oiseau.getY() + top, oiseau.getZ() + beg);
+		Point3D centreTete = new Point3D(oiseau.getX(), oiseau.getY(), oiseau.getZ() + centre);
 		Point3D topRight = new Point3D(oiseau.getX() + right, oiseau.getY() + top, oiseau.getZ() + beg);
 		Point3D rearLeft = new Point3D(oiseau.getX() + aligneLeft, oiseau.getY() + top, oiseau.getZ() + end);
 		Point3D rearRight = new Point3D(oiseau.getX() + alignRight, oiseau.getY() + top, oiseau.getZ() + end);
 		Point3D botLeft = new Point3D(oiseau.getX() + left, oiseau.getY() + bottom, oiseau.getZ() + beg);
 		Point3D botRight = new Point3D(oiseau.getX() + right, oiseau.getY() + bottom, oiseau.getZ() + beg);
-
-		
-		//top
-		pGauche.add(new Triangle(topLeft, rearLeft, topRight));
-		//int
-		pGauche.add(new Triangle(botLeft, rearLeft, topLeft));
-		//bot
-		pGauche.add(new Triangle(botRight, rearLeft, botLeft));
-		//ext
-		pGauche.add(new Triangle(botRight,topRight,rearLeft));
-		
-		//top
-		pDroite.add(new Triangle(rearRight, topRight, topLeft));
-		//int
-		pDroite.add(new Triangle(topRight, rearRight, botRight));
-		//bot
-		pDroite.add(new Triangle(botRight, rearRight, botLeft));
-		//ext
-		pDroite.add(new Triangle(topLeft,botLeft,rearRight));
 
 	}
 
@@ -79,19 +61,39 @@ public class Queue implements InterfaceCorps {
 	}
 
 	/**
+	 * 
+	 */
+	public void move(float x, float y, float z) {
+
+	}
+
+	/**
 	 * Trace les informations contenues dans l'objet
 	 * 
 	 * @param gl
 	 *            l'objet effectuant les positionnement des points
 	 */
 	public void render(GL2 gl) {
-		for (Triangle t : pDroite) {
-			t.render(gl, oiseau);
-		}
+		// push car Lune pas affectee par l'angle de la terre autour d'elle meme
+		gl.glPushMatrix();
 
-		for (Triangle t : pGauche) {
-			t.render(gl, oiseau);
-		}
+		gl.glTranslatef(0+oiseau.getX(), 0+oiseau.getY(), 8+oiseau.getZ());
+		gl.glColor3f(0.0f, 0.0f, 1.0f);
+		glut.glutWireSphere(2, 50, 50);
+		
+		
+		gl.glTranslatef(1, 0, 1);
+		gl.glColor3f(0.0f, 0.0f, 1.0f);
+		glut.glutWireSphere(0.25, 10, 10);
+		
+		
+		gl.glTranslatef(-2, 0, 0);
+		gl.glColor3f(0.0f, 0.0f, 1.0f);
+		glut.glutWireSphere(0.25, 10, 10);
+		
+		
+		
+		gl.glPopMatrix();
 	}
 
 }

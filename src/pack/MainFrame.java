@@ -3,8 +3,6 @@ package pack;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import com.jogamp.newt.event.KeyEvent;
-import com.jogamp.newt.event.KeyListener;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
@@ -18,21 +16,21 @@ public class MainFrame extends JFrame {
 		setTitle("Oiseau 3D");
 		setSize(640, 480);
 
-		// Définit les critères que le contexte du rendu doit supporter
+		// Dï¿½finit les critï¿½res que le contexte du rendu doit supporter
 		// Si la machine ne peut rendre ce que l'on attend d'elle, une exception
-		// sera levée
+		// sera levï¿½e
 		GLCapabilities glCapabilities = new GLCapabilities(GLProfile.getDefault());
 
-		// Création du canvas OpenGL. Support du dessin
+		// Crï¿½ation du canvas OpenGL. Support du dessin
 		GLCanvas glCanvas = new GLCanvas(glCapabilities);
 		MyGLEventListener glListener = new MyGLEventListener();
 		
-		// Callback attaché à la surface dessinable
+		// Callback attachï¿½ ï¿½ la surface dessinable
 		glCanvas.addGLEventListener(glListener);
-		/*
+		
 		// Ajout d'un KeyListener sur le canvas
 		glCanvas.addKeyListener(new EcouteurClavier(glListener));
-		 */
+		 
 		// Surface dessinable attachï¿½e ï¿½ la fenï¿½tre
 		add(glCanvas);
 

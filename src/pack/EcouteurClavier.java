@@ -27,6 +27,8 @@ public class EcouteurClavier implements KeyListener {
 			glListener.updateAngleCam(0.0f, -1.0f, 0.0f);
 		}
 
+		
+		
 		if (e.getKeyChar() == 'm') {
 			glListener.updatePosCam(1.0f, 0.0f, 0.0f);
 		}
@@ -40,8 +42,25 @@ public class EcouteurClavier implements KeyListener {
 			glListener.updatePosCam(0.0f, 0.0f, 1.0f);
 		}
 		if (e.getKeyChar() == 'p') {
-			glListener.updatePosCam(0.0f, 0.0f, -1.0f);
+			glListener.updatePosCam(0.0f, -1.0f, 0.0f);
 		}
+		if (e.getKeyChar() == 'i') {
+			glListener.updatePosCam(0.0f, 1.0f, 0.0f);
+		}
+		
+
+		 if (e.getKeyChar() == 'a') { 
+            glListener.o.move(0.0f, 0.0f, -0.1f); 
+        } 
+		 if (e.getKeyChar() == 'e') { 
+             glListener.o.move(0.0f, 0.0f, 0.1f); 
+         } 
+		 if (e.getKeyChar() == 'w') { 
+             glListener.o.move(0.1f, 0.0f, 0.0f); 
+         } if (e.getKeyChar() == 'c') { 
+             glListener.o.move(-0.1f, 0.0f, 0.0f); 
+         } 
+
 		
 	}
 

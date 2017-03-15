@@ -2,7 +2,6 @@ package pack;
 
 import java.util.ArrayList;
 
-import com.jogamp.nativewindow.util.Point;
 import com.jogamp.opengl.GL2;
 
 /**
@@ -15,26 +14,28 @@ public class AileD implements InterfaceCorps{
 	
 	
 	private Oiseau oiseau; 
-	private ArrayList<Triangle> listeTri = new ArrayList<Triangle>();
+	private ArrayList<Triangle> liste1 = new ArrayList<Triangle>();
+	private ArrayList<Triangle> liste2 = new ArrayList<Triangle>();
+	private float coef = 1.0f;
 	
 	//close
-	private float ctop = 1.5f;
-	private float cbot = -1.5f;
-	private float cfront = 5.0f;
-	private float crear = 0.0f;
-	private float cbeg = -2.5f;
+	private float ctop = 1.5f*coef;
+	private float cbot = -1.5f*coef;
+	private float cfront = 5.0f*coef;
+	private float crear = 0.0f*coef;
+	private float cbeg = -2.5f*coef;
 	
 	
-	private float mtop = 1.0f;
-	private float mbot = -1.0f;
-	private float mfront = 4.0f;
-	private float mrear = -1.0f;
-	private float mbeg = -5.0f;
+	private float mtop = 1.0f*coef;
+	private float mbot = -1.0f*coef;
+	private float mfront = 4.0f*coef;
+	private float mrear = -1.0f*coef;
+	private float mbeg = -5.0f*coef;
 	
 	
-	private float ex = -20.0f;
-	private float ey = 0.0f;
-	private float ez = -10.0f;
+	private float ex = -20.0f*coef;
+	private float ey = 0.0f*coef;
+	private float ez = -10.0f*coef;
 	
 	
 	
@@ -75,24 +76,24 @@ public class AileD implements InterfaceCorps{
 		
 		
 		//top
-		listeTri.add(new Triangle(closeFT, midFT,closeRT));
-		listeTri.add(new Triangle(midFT, midRT, closeRT));
-		listeTri.add(new Triangle(midFT,end,midRT));
+		liste1.add(new Triangle(closeFT, midFT,closeRT));
+		liste1.add(new Triangle(midFT, midRT, closeRT));
+		liste2.add(new Triangle(midFT,end,midRT));
 		
 		//front
-		listeTri.add(new Triangle(closeFB, midFB, midFT));
-		listeTri.add(new Triangle(midFT,closeFT,closeFB));
-		listeTri.add(new Triangle(midFT,midFB,end));
+		liste1.add(new Triangle(closeFB, midFB, midFT));
+		liste1.add(new Triangle(midFT,closeFT,closeFB));
+		liste2.add(new Triangle(midFT,midFB,end));
 		
 		//bot
-		listeTri.add(new Triangle(closeFB, midRB, midFB));
-		listeTri.add(new Triangle(closeFB, closeRB, midRB));
-		listeTri.add(new Triangle(midFB, midRB,end));
+		liste1.add(new Triangle(closeFB, midRB, midFB));
+		liste1.add(new Triangle(closeFB, closeRB, midRB));
+		liste2.add(new Triangle(midFB, midRB,end));
 		
 		//rear
-		listeTri.add(new Triangle(closeRT, midRT, closeRB));
-		listeTri.add(new Triangle(closeRB, midRT, midRB));
-		listeTri.add(new Triangle(midRT,end,midRB));
+		liste1.add(new Triangle(closeRT, midRT, closeRB));
+		liste1.add(new Triangle(closeRB, midRT, midRB));
+		liste2.add(new Triangle(midRT,end,midRB));
 		
 
 	}
@@ -105,21 +106,17 @@ public class AileD implements InterfaceCorps{
 	}
 	
 	/**
-	 * Deplace l'ensemble des points de la structure
-	 */
-	public void move(float x, float y, float z){
-		
-	}
-	
-	/**
 	 * Trace les informations contenues dans l'objet
 	 * @param gl l'objet effectuant les positionnement des points
 	 */
 	public void render(GL2 gl){
-		for (Triangle t : listeTri) {
-			t.render(gl);
+		for (Triangle t : liste1) {
+			t.render(gl, oiseau);
 		}
 
+		for (Triangle t : liste2) {
+			t.render(gl, oiseau);
+		}
 	}
 	
 	/**

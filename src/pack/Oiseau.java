@@ -3,10 +3,6 @@ package pack;
 import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
-import com.jogamp.opengl.glu.GLU;
-import com.jogamp.opengl.util.gl2.GLUT;
 
 /**
  * 
@@ -31,6 +27,7 @@ public class Oiseau {
 		membres.add(new AileD(this));
 		membres.add(new Queue(this));
 		membres.add(new Corps(this));
+		membres.add(new Tete(this));
 	}
 	
 	/**
@@ -41,16 +38,18 @@ public class Oiseau {
 		for(InterfaceCorps i : membres){
 			i.render(gl);
 		}
+		
 	}
 	
 	
 	/**
-	 * Deplace l'ensemble des membres
+	 * Deplace le centre de l'oiseau
 	 */
 	public void move(float x, float y, float z){
-		for(InterfaceCorps i : membres){
-			i.move(x, y,z);
-		}
+		this.x += x;
+		this.y += y;
+		this.z += z;
+
 	}
 	
 	public void rotate(float angle,float x, float y, float z){

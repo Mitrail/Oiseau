@@ -16,6 +16,5 @@ public interface InterfaceCorps {
 	
 	public void rotate(float angle,float x, float y, float z);//todo
 	
-	public void move(float x, float y, float z);//todo
 	
 }
