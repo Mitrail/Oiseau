@@ -18,16 +18,33 @@ public class Oiseau {
 	private float y;
 	private float z;
 	
+	private AileG ag;
+	private AileD ad;
+	private Queue q;
+	private Corps c;
+	private Tete t;
+	
+	private float ox;
+	private float oy;
+	private float oz;
+	private float angle = 0.0f;
+	
 	public Oiseau(float x, float y, float z){
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		
-		membres.add(new AileG(this));
-		membres.add(new AileD(this));
-		membres.add(new Queue(this));
-		membres.add(new Corps(this));
-		membres.add(new Tete(this));
+		ag = new AileG(this);
+		ad = new AileD(this);
+		q  = new Queue(this);
+		c = new Corps(this);
+		t = new Tete(this);
+
+		membres.add(ag);
+		membres.add(ad);
+		membres.add(q);
+		membres.add(c);
+		membres.add(t);
 	}
 	
 	/**
@@ -35,9 +52,14 @@ public class Oiseau {
 	 * @param gl l'objet placant les points
 	 */
 	public void render(GL2 gl){
+		
+
+		gl.glTranslatef(x, y, z);
+		gl.glRotatef(angle,0,0,1);
 		for(InterfaceCorps i : membres){
 			i.render(gl);
 		}
+		//gl.glRotatef(angle,0,0,1);
 		
 	}
 	
@@ -48,7 +70,8 @@ public class Oiseau {
 	public void move(float x, float y, float z){
 		this.x += x;
 		this.y += y;
-		this.z += z;
+		//this.z += z;
+		angle += z*5.0f;
 
 	}
 	
@@ -58,19 +81,26 @@ public class Oiseau {
 		}
 	}
 	
+	public void battre(float delta){
+
+		ag.battre(delta);
+		ad.battre(delta);
+		q.battre(delta);
+	}
+	
 	
 	// SET - GET - IS - TO
 
 	public float getX() {
-		return x;
+		return 0;
 	}
 
 	public float getY() {
-		return y;
+		return 0;
 	}
 
 	public float getZ() {
-		return z;
+		return 0;
 	}
 	
 	

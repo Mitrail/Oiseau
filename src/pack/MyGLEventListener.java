@@ -1,5 +1,7 @@
 package pack;
 
+import java.util.ArrayList;
+
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL2GL3;
@@ -10,9 +12,10 @@ import com.jogamp.opengl.util.gl2.GLUT;
 
 public class MyGLEventListener implements GLEventListener {
 
-	Oiseau o = new Oiseau(0,0,0);
-	Oiseau o2 = new Oiseau(-25,0,-25);
-	Oiseau o3 = new Oiseau(25,0,-25);
+	
+	private ArrayList<Oiseau> ao = new ArrayList<Oiseau>();
+	
+	
 	
 	float modx = 0.0f;
 	float mody = 0.0f;
@@ -21,9 +24,18 @@ public class MyGLEventListener implements GLEventListener {
 	float modPosx = 0.0f;
 	float modPosy = 0.0f;
 	float modPosz = 0.0f;
+	
+	public ArrayList<Oiseau> getAo(){
+		return ao;
+	}
 
 	@Override
 	public void init(GLAutoDrawable drawable) {
+		
+		ao.add(new Oiseau(0,0,0));
+		
+	ao.add(new Oiseau(-25,0,-25));
+	ao.add(new Oiseau(25,0,-25));
 
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -84,9 +96,17 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
 
-		o.render(gl);
-		o2.render(gl);
-		o3.render(gl);
+		
+		
+		for(Oiseau o : ao){
+
+			gl.glPushMatrix();
+			o.render(gl);
+			gl.glPopMatrix();
+			
+			
+			o.battre(0.05f);
+		}
 
 	}
 

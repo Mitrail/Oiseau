@@ -12,6 +12,9 @@ import com.jogamp.opengl.GL2;
  */
 public class Queue implements InterfaceCorps {
 
+	private float delta = 0;
+	private boolean monte = true;
+	
 	private Oiseau oiseau;
 	private ArrayList<Triangle> pDroite = new ArrayList<Triangle>();
 	private ArrayList<Triangle> pGauche = new ArrayList<Triangle>();
@@ -27,14 +30,18 @@ public class Queue implements InterfaceCorps {
 	private float left = -2.5f * coef;
 	private float right = 2.5f * coef;
 	// avant/arriere
-	private float end = -6.0f * coef;
-	private float beg = 0 * coef;
+	private float end = -8.0f * coef;
+	private float beg = -2 * coef;
 	// centre
 	private float mid = 0 * coef;
 	
 	
-	
-	
+	Point3D topLeft ;
+	Point3D topRight ;
+	Point3D rearLeft ;
+	Point3D rearRight ;
+	Point3D botLeft ;
+	Point3D botRight ;
 
 	/**
 	 * 
@@ -43,12 +50,12 @@ public class Queue implements InterfaceCorps {
 	 */
 	public Queue(Oiseau o) {
 		this.oiseau = o;
-		Point3D topLeft = new Point3D(oiseau.getX() + left, oiseau.getY() + top, oiseau.getZ() + beg);
-		Point3D topRight = new Point3D(oiseau.getX() + right, oiseau.getY() + top, oiseau.getZ() + beg);
-		Point3D rearLeft = new Point3D(oiseau.getX() + aligneLeft, oiseau.getY() + top, oiseau.getZ() + end);
-		Point3D rearRight = new Point3D(oiseau.getX() + alignRight, oiseau.getY() + top, oiseau.getZ() + end);
-		Point3D botLeft = new Point3D(oiseau.getX() + left, oiseau.getY() + bottom, oiseau.getZ() + beg);
-		Point3D botRight = new Point3D(oiseau.getX() + right, oiseau.getY() + bottom, oiseau.getZ() + beg);
+		topLeft = new Point3D(oiseau.getX() + left, oiseau.getY() + top, oiseau.getZ() + beg);
+		topRight = new Point3D(oiseau.getX() + right, oiseau.getY() + top, oiseau.getZ() + beg);
+		rearLeft = new Point3D(oiseau.getX() + aligneLeft, oiseau.getY() + mid, oiseau.getZ() + end);
+		rearRight = new Point3D(oiseau.getX() + alignRight, oiseau.getY() + mid, oiseau.getZ() + end);
+		botLeft = new Point3D(oiseau.getX() + left, oiseau.getY() + bottom, oiseau.getZ() + beg);
+		botRight = new Point3D(oiseau.getX() + right, oiseau.getY() + bottom, oiseau.getZ() + beg);
 
 		
 		//top
@@ -76,6 +83,24 @@ public class Queue implements InterfaceCorps {
 	 */
 	public void rotate(float angle, float x, float y, float z) {
 
+	}
+	
+	public void battre(float angle){
+		if(monte && delta>1.0f){
+			monte = false;
+		} else if (!monte && delta <-1.0f){
+			monte = true;
+		}
+		
+		
+		if(!monte){
+			angle = -angle;
+		}
+		
+		delta += angle;
+		rearLeft.moveY(angle);
+		rearRight.moveY(angle);
+		
 	}
 
 	/**

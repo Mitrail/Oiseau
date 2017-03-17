@@ -26,7 +26,7 @@ public class Corps implements InterfaceCorps {
 		top = 1.5f;
 		bottom = -1.5f;
 		front = 5.5f;
-		back = 0.0f;
+		back = -2.0f;
 		left = 2.5f;
 		right = -2.5f;
 

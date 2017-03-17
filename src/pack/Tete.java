@@ -77,7 +77,7 @@ public class Tete implements InterfaceCorps {
 		// push car Lune pas affectee par l'angle de la terre autour d'elle meme
 		gl.glPushMatrix();
 
-		gl.glTranslatef(0+oiseau.getX(), 0+oiseau.getY(), 8+oiseau.getZ());
+		gl.glTranslatef(0+oiseau.getX(), 0+oiseau.getY(), 7+oiseau.getZ());
 		gl.glColor3f(0.0f, 0.0f, 1.0f);
 		glut.glutWireSphere(2, 50, 50);
 		

@@ -12,6 +12,8 @@ import com.jogamp.opengl.GL2;
  */
 public class AileG implements InterfaceCorps{
 	
+	private boolean monte = true;
+	private float delta  = 0;
 	
 	private Oiseau oiseau; 
 	private ArrayList<Triangle> liste1 = new ArrayList<Triangle>();
@@ -37,6 +39,17 @@ public class AileG implements InterfaceCorps{
 	private float ey = 0.0f*coef;
 	private float ez = -10.0f*coef;
 	
+	private Point3D closeFT;
+	private Point3D closeRT;
+	private Point3D closeFB;
+	private Point3D closeRB;
+	private Point3D midFT;
+	private Point3D midRT;
+	private Point3D midFB;
+	private Point3D midRB;
+	private Point3D end;
+
+	
 	
 	
 	
@@ -49,16 +62,7 @@ public class AileG implements InterfaceCorps{
 	public AileG(Oiseau o){
 		this.oiseau = o;
 		
-		Point3D closeFT;
-		Point3D closeRT;
-		Point3D closeFB;
-		Point3D closeRB;
-		Point3D midFT;
-		Point3D midRT;
-		Point3D midFB;
-		Point3D midRB;
-		Point3D end;
-
+		
 		closeFT = new Point3D(oiseau.getX() + cbeg, oiseau.getY() + ctop, oiseau.getZ() + cfront);
 		closeRT = new Point3D(oiseau.getX() + cbeg, oiseau.getY() + ctop, oiseau.getZ() + crear);
 		
@@ -117,7 +121,6 @@ public class AileG implements InterfaceCorps{
 		for (Triangle t : liste2) {
 			t.render(gl, oiseau);
 		}
-
 	}
 	
 	/**
@@ -125,6 +128,26 @@ public class AileG implements InterfaceCorps{
 	 * @param angle float la modification a apporter aux ailes
 	 */
 	public void battre(float angle){
+
+		if(monte && delta>3.0f){
+			monte = false;
+		} else if (!monte && delta <-3.0f){
+			monte = true;
+		}
+		
+		
+		if(!monte){
+			angle = -angle;
+		}
+		
+		delta += angle;
+		
+		midFB.moveY(angle);
+		midFT.moveY(angle);
+		midRB.moveY(angle);
+		midRT.moveY(angle);
+		
+		end.moveY(angle*4.0f);
 		
 	}
 	
