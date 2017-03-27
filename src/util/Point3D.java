@@ -1,4 +1,4 @@
-package pack;
+package util;
 
 public class Point3D {
 

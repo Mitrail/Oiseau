@@ -1,8 +1,11 @@
-package pack;
+package model;
 
 import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
+
+import util.Point3D;
+import util.Triangle;
 
 /**
  * Represente les ailes de l'oiseau

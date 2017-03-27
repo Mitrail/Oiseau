@@ -1,4 +1,4 @@
-package pack;
+package view;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -8,6 +8,8 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 import com.jogamp.opengl.util.FPSAnimator;
+
+import control.EcouteurClavier;
 
 public class MainFrame extends JFrame {
 

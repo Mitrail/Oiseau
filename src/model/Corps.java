@@ -1,9 +1,11 @@
-package pack;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.jogamp.opengl.GL2;
+
+import util.Point3D;
 
 public class Corps implements InterfaceCorps {
 

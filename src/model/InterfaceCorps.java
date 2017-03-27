@@ -1,4 +1,4 @@
-package pack;
+package model;
 
 import com.jogamp.opengl.GL2;
 

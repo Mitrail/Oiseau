@@ -1,4 +1,4 @@
-package pack;
+package view;
 
 public class AppLauncher {
 

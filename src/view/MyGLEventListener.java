@@ -1,4 +1,4 @@
-package pack;
+package view;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,8 @@ import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
+
+import model.Oiseau;
 
 public class MyGLEventListener implements GLEventListener {
 

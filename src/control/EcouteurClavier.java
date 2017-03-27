@@ -1,6 +1,9 @@
-package pack;
+package control;
 
 import java.awt.event.KeyListener;
+
+import model.Oiseau;
+import view.MyGLEventListener;
 
 
 public class EcouteurClavier implements KeyListener {
