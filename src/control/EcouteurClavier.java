@@ -49,7 +49,7 @@ public class EcouteurClavier implements KeyListener {
 			glListener.updatePosCam(0.0f, 1.0f, 0.0f); // monter
 		}
 
-		// Modification 
+		// Modification
 		if (e.getKeyChar() == 'a') {
 			for (Oiseau o : glListener.getAo()) {
 				o.orienter(0.0f, 0.0f, -0.1f);

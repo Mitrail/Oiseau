@@ -18,12 +18,14 @@ import com.jogamp.opengl.util.FPSAnimator;
 import control.EcouteurBouton;
 import control.EcouteurClavier;
 import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class Window2 extends JFrame{
 
 	private JFrame frame;
 	private JPanel panelCanvas,panelButton;
-	private JButton btnD,btnZ,btnQ,btnS,btnAvant,btnArriere,btnGauche,btnDroite,btnHaut,btnBas;
+	private JButton btnD,btnZ,btnQ,btnS,btnAvant,btnArriere,btnGauche,btnDroite,btnHaut,btnBas,btnOrientationGauche,btnOrientationDroite;
 	private JLabel lblModifierLaPosition;
 
 
@@ -31,6 +33,7 @@ public class Window2 extends JFrame{
 	 * Create the application.
 	 */
 	public Window2() {
+		getContentPane().setBackground(SystemColor.control);
 		chargerLookAndFeelNimbus();
 		initialize();
 	}
@@ -40,19 +43,22 @@ public class Window2 extends JFrame{
 	 */
 	private void initialize() {
 		
+		setTitle("PROJET – JAVA OPENGL - Oiseau");
 		frame = new JFrame();
 		frame.setBounds(100, 100, 854, 608);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		setSize(1059, 630);
+		setSize(1200, 630);
 		getContentPane().setLayout(null);
 		
 		panelCanvas = new JPanel(new BorderLayout());
+		panelCanvas.setBackground(SystemColor.control);
 		panelCanvas.setBounds(10, 11, 586, 569);
 		getContentPane().add(panelCanvas);
 		
 		panelButton = new JPanel();
-		panelButton.setBounds(606, 11, 427, 569);
+		panelButton.setBackground(SystemColor.control);
+		panelButton.setBounds(606, 11, 572, 569);
 		getContentPane().add(panelButton);
 		panelButton.setLayout(null);
 		
@@ -92,22 +98,22 @@ public class Window2 extends JFrame{
 		// Création et initialisation des boutons
 		btnZ = new JButton("Z");
 		btnZ.addActionListener(new EcouteurBouton(this,glListener));
-		btnZ.setBounds(281, 6, 40, 40);
+		btnZ.setBounds(300, 6, 40, 40);
 		panelButton.add(btnZ);
 		
 		btnQ = new JButton("Q");
 		btnQ.addActionListener(new EcouteurBouton(this,glListener));
-		btnQ.setBounds(229, 58, 40, 40);
+		btnQ.setBounds(248, 58, 40, 40);
 		panelButton.add(btnQ);
 		
 		btnD = new JButton("S");
 		btnD.addActionListener(new EcouteurBouton(this,glListener));
-		btnD.setBounds(281, 58, 40, 40);
+		btnD.setBounds(300, 58, 40, 40);
 		panelButton.add(btnD);
 		
 		btnS = new JButton("D");
 		btnS.addActionListener(new EcouteurBouton(this,glListener));
-		btnS.setBounds(333, 58, 40, 40);
+		btnS.setBounds(352, 58, 40, 40);
 		panelButton.add(btnS);
 		
 		JLabel lblMo = new JLabel("Modifier l'angle de la cam\u00E9ra :");
@@ -116,37 +122,51 @@ public class Window2 extends JFrame{
 
 		btnHaut = new JButton("Haut - O");
 		btnHaut.addActionListener(new EcouteurBouton(this,glListener));
-		btnHaut.setBounds(281, 224, 90, 40);
+		btnHaut.setBounds(428, 133, 90, 40);
 		panelButton.add(btnHaut);
 		
 		btnBas = new JButton("Bas - U");
 		btnBas.addActionListener(new EcouteurBouton(this,glListener));
-		btnBas.setBounds(75, 224, 90, 40);
+		btnBas.setBounds(222, 133, 90, 40);
 		panelButton.add(btnBas);
 		
 		btnAvant = new JButton("Avant - I");
 		btnAvant.addActionListener(new EcouteurBouton(this,glListener));
-		btnAvant.setBounds(177, 224, 90, 40);
+		btnAvant.setBounds(324, 133, 90, 40);
 		panelButton.add(btnAvant);
 		
 		btnArriere = new JButton("Arrière - K");
 		btnArriere.addActionListener(new EcouteurBouton(this,glListener));
-		btnArriere.setBounds(177, 276, 90, 40);
+		btnArriere.setBounds(324, 185, 90, 40);
 		panelButton.add(btnArriere);
 		
 		btnGauche = new JButton("Gauche - J");
 		btnGauche.addActionListener(new EcouteurBouton(this,glListener));
-		btnGauche.setBounds(75, 276, 90, 40);
+		btnGauche.setBounds(222, 185, 90, 40);
 		panelButton.add(btnGauche);
 		
 		btnDroite = new JButton("Droite - L");
 		btnDroite.addActionListener(new EcouteurBouton(this,glListener));
-		btnDroite.setBounds(281, 276, 90, 40);
+		btnDroite.setBounds(428, 185, 90, 40);
 		panelButton.add(btnDroite);
 		
 		lblModifierLaPosition = new JLabel("Modifier la position de la cam\u00E9ra : ");
 		lblModifierLaPosition.setBounds(6, 165, 204, 33);
 		panelButton.add(lblModifierLaPosition);
+		
+		btnOrientationGauche = new JButton("Rotation de la patrouille sur la gauche - A");
+		btnOrientationGauche.addActionListener(new EcouteurBouton(this,glListener));
+		btnOrientationGauche.setBounds(6, 351, 253, 40);
+		panelButton.add(btnOrientationGauche);
+		
+		btnOrientationDroite = new JButton("Rotation de la patrouille sur la droite - E");
+		btnOrientationDroite.setBounds(271, 351, 253, 40);
+		panelButton.add(btnOrientationDroite);
+		
+		JLabel lblTournerLesOiseaux = new JLabel("Tourner les oiseaux");
+		lblTournerLesOiseaux.setBounds(6, 306, 204, 33);
+		panelButton.add(lblTournerLesOiseaux);
+		btnOrientationDroite.addActionListener(new EcouteurBouton(this,glListener));
 		
 	}
 	
@@ -231,6 +251,14 @@ public class Window2 extends JFrame{
 
 	public JLabel getLblModifierLaPosition() {
 		return lblModifierLaPosition;
+	}
+
+	public JButton getBtnOrientationGauche() {
+		return btnOrientationGauche;
+	}
+
+	public JButton getBtnOrientationDroite() {
+		return btnOrientationDroite;
 	}
 	
 	
