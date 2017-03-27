@@ -9,17 +9,28 @@ import util.Point3D;
 
 public class Corps implements InterfaceCorps {
 
-	// position haut-bas, gauche-droite, avant-arri�re
+	/**
+	 * position des points communs a plusieurs triangles
+	 */
 	private float top, bottom, front, back, left, right;
 
+	/**
+	 * ensemble des points de l'oiseau
+	 */
 	private Point3D
-	// Points de la face avant
+	//points de la face avant
 	pAvantHautGauche, pAvantBasGauche, pAvantHautDroit,pAvantBasDroit,
 
 	// Points de la face arri�re
 	pArriereHautGauche, pArriereBasGauche,pArriereHautDroit,pArriereBasDroit;
 
+	/**
+	 * l'Oiseau auquel le membre est rattaché
+	 */
 	private Oiseau o;
+	/**
+	 * la liste des points pour iterer
+	 */
 	private List<Point3D> listePoints = new ArrayList<Point3D>();
 
 	public Corps(Oiseau o) {
@@ -115,11 +126,7 @@ public class Corps implements InterfaceCorps {
 
 	}
 
-	@Override
-	public void rotate(float angle, float x, float y, float z) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	
 }

@@ -11,31 +11,41 @@ import com.jogamp.opengl.GL2;
  * connait les differentes parties du corps
  */
 public class Oiseau {
-
-	private ArrayList<InterfaceCorps> membres = new ArrayList<InterfaceCorps>();
 	
-	private float x;
+	//position de l'oiseau
+	private float x; 
 	private float y;
 	private float z;
 	
-	private AileG ag;
-	private AileD ad;
+	//membres pour les acces ponctuels
+	private Aile ag;
+	private Aile ad;
 	private Queue q;
 	private Corps c;
 	private Tete t;
 	
-	private float ox;
+	//liste des membres de l'oiseau pour iterer 
+	private ArrayList<InterfaceCorps> membres = new ArrayList<InterfaceCorps>();
+	
+	//orientation de l'oiseau d'un angle sur chaque axe
+	private float ox;			
 	private float oy;
 	private float oz;
 	private float angle = 0.0f;
 	
+	/**
+	 * Creer un nouvel oiseau a une position donnee
+	 * @param x la pos x de l'oiseau dans l'espace
+	 * @param y la pos y de l'oiseau dans l'espace
+	 * @param z la pos z de l'oiseau dans l'espace
+	 */
 	public Oiseau(float x, float y, float z){
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		
-		ag = new AileG(this);
-		ad = new AileD(this);
+		ag = new Aile(this,true);
+		ad = new Aile(this,false);
 		q  = new Queue(this);
 		c = new Corps(this);
 		t = new Tete(this);
@@ -48,18 +58,16 @@ public class Oiseau {
 	}
 	
 	/**
-	 * Execite les methodes de rendu des differentes parties du corps
+	 * Execute les methodes de rendu des differentes parties du corps
 	 * @param gl l'objet placant les points
 	 */
 	public void render(GL2 gl){
 		
-
 		gl.glTranslatef(x, y, z);
 		gl.glRotatef(angle,0,0,1);
 		for(InterfaceCorps i : membres){
 			i.render(gl);
 		}
-		//gl.glRotatef(angle,0,0,1);
 		
 	}
 	
@@ -71,16 +79,17 @@ public class Oiseau {
 		this.x += x;
 		this.y += y;
 		//this.z += z;
-		angle += z*5.0f;
+		angle += z*7.5f;
 
 	}
 	
-	public void rotate(float angle,float x, float y, float z){
-		for(InterfaceCorps i : membres){
-			i.rotate(angle, x, y,z);
-		}
-	}
 	
+
+	
+	/**
+	 * Faut battre les ailes et la queue de l'oiseau
+	 * @param delta la variation en hauteur des ailes
+	 */
 	public void battre(float delta){
 
 		ag.battre(delta);

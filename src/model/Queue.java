@@ -15,11 +15,27 @@ import util.Triangle;
  */
 public class Queue implements InterfaceCorps {
 
-	private float delta = 0;
+	/**
+	 * variation de la hauteur de la queue
+	 */
+	private float delta = 0;	
+	/**
+	 * savoir si la queue monte ou descent
+	 */
 	private boolean monte = true;
 	
-	private Oiseau oiseau;
+	/**
+	 * L'oiseau auquel le membre est rattache
+	 */
+	private Oiseau oiseau;			//l'oiseau 
+	
+	/**
+	 * Liste des triangles de la partie droite de la queue
+	 */
 	private ArrayList<Triangle> pDroite = new ArrayList<Triangle>();
+	/**
+	 * Liste des triangles de la partie gauche de la queue
+	 */
 	private ArrayList<Triangle> pGauche = new ArrayList<Triangle>();
 	private float coef = 1.0f;
 
@@ -39,12 +55,12 @@ public class Queue implements InterfaceCorps {
 	private float mid = 0 * coef;
 	
 	
-	Point3D topLeft ;
-	Point3D topRight ;
-	Point3D rearLeft ;
-	Point3D rearRight ;
-	Point3D botLeft ;
-	Point3D botRight ;
+	private Point3D topLeft ;
+	private Point3D topRight ;
+	private Point3D rearLeft ;
+	private Point3D rearRight ;
+	private Point3D botLeft ;
+	private Point3D botRight ;
 
 	/**
 	 * 
@@ -81,13 +97,12 @@ public class Queue implements InterfaceCorps {
 
 	}
 
-	/**
-	 * 
-	 */
-	public void rotate(float angle, float x, float y, float z) {
 
-	}
 	
+	/**
+	 * Faut varier les points de la queue pour les faire bouger
+	 * @param angle float la modification a apporter a la queue
+	 */
 	public void battre(float angle){
 		if(monte && delta>1.0f){
 			monte = false;
@@ -109,8 +124,7 @@ public class Queue implements InterfaceCorps {
 	/**
 	 * Trace les informations contenues dans l'objet
 	 * 
-	 * @param gl
-	 *            l'objet effectuant les positionnement des points
+	 * @param gl l'objet effectuant les positionnement des points
 	 */
 	public void render(GL2 gl) {
 		for (Triangle t : pDroite) {

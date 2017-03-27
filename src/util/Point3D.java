@@ -1,28 +1,17 @@
-package util;
+package pack;
 
-/**
- * Cette classe représente un point dans l'espace (3 dimensions). Cette classe
- * est caractérisée par : sa valeur sur l'axe x, y et z
- * 
- * @author Nico
- *
- */
 public class Point3D {
 
 	/**
-	 * x, y et z correspondent aux coordonnées dans l'espace d'un object Point3D
+	 * La position du points en x,y,z
 	 */
 	private float x, y, z;
 
 	/**
-	 * Constructeur qui prend un argument les 3 coordonnées
-	 * 
+	 * Creer un point a la position x y z 
 	 * @param x
-	 *            valeur sur l'axe x
 	 * @param y
-	 *            valeur sur l'axe y
 	 * @param z
-	 *            valeur sur l'axe z
 	 */
 	public Point3D(float x, float y, float z) {
 		this.x = x;
@@ -30,10 +19,7 @@ public class Point3D {
 		this.z = z;
 	}
 
-	/**
-	 * Méthode equals de classe. Deux objets Point3D sont identiques s'ils ont
-	 * des coordonnées identiques
-	 */
+
 	public boolean equals(Object o) {
 		if (o instanceof Point3D) {
 			Point3D p = (Point3D) o;
@@ -42,53 +28,38 @@ public class Point3D {
 		return false;
 	}
 
-	/**
-	 * Méthode d'affichache console de classe
-	 */
 	public String toString() {
 		return "Coordonï¿½es du point = (" + x + "," + y + "," + z + ")";
 	}
 
-	/**
-	 * Méthode clonage en profondeur
-	 */
 	public Point3D clone() {
 		return new Point3D(this.x, this.y, this.z);
 	}
 
 	/**
-	 * Déplace l'objet sur l'axe des X
-	 * 
+	 * Deplace le point de x sur l'axe x
 	 * @param x
-	 *            valeur de la translation
 	 */
 	public void moveX(float x) {
 		this.x += x;
 	}
 
 	/**
-	 * Déplace l'objet sur l'axe des Y
-	 * 
+	 * Deplace le point de y sur l'axe y
 	 * @param y
-	 *            valeur de la translation
 	 */
 	public void moveY(float y) {
 		this.y += y;
 	}
 
 	/**
-	 * Déplace l'objet sur l'axe des Z
-	 * 
+	 * Deplace le point de z sur l'axe z
 	 * @param z
-	 *            valeur de la translation
 	 */
 	public void moveZ(float z) {
 		this.z += z;
 	}
 
-	/*
-	 * Getter & Setter
-	 */
 	public float getX() {
 		return x;
 	}
@@ -112,8 +83,14 @@ public class Point3D {
 	public void setZ(float z) {
 		this.z = z;
 	}
-
-	public void setPos(float x, float y, float z) {
+	
+	/**
+	 * Actualise la position du point 
+	 * @param x la nouvelle position en x
+	 * @param y la nouvelle position en y
+	 * @param z la nouvelle position en z
+	 */
+	public void setPos(float x, float y, float z){
 		this.x = x;
 		this.y = y;
 		this.z = z;
