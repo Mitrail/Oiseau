@@ -108,7 +108,7 @@ public class MyGLEventListener implements GLEventListener {
 		
 		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
-
+		//gl.glColor3f((float)Math.random(), (float)Math.random(), (float)Math.random());
 		Oiseau oiseau = ao.get(0);
 		
 		
@@ -119,7 +119,7 @@ public class MyGLEventListener implements GLEventListener {
 			gl.glPopMatrix();
 			
 			
-			o.battre(0.1f);
+			o.battre(0.2f*(float)Math.random());
 		}
 		
 		

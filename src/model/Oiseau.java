@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+
+import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 
 /**
@@ -47,12 +49,22 @@ public class Oiseau {
 	private float ox, oy, oz, angle = 0.0f;
 	
 	/**
+	 * Couleurs RGB
+	 */
+	private float r,g,b;
+	
+	/**
 	 * Creer un nouvel oiseau a une position donnee
 	 * @param x la pos x de l'oiseau dans l'espace
 	 * @param y la pos y de l'oiseau dans l'espace
 	 * @param z la pos z de l'oiseau dans l'espace
 	 */
 	public Oiseau(float x, float y, float z){
+		r = (float)Math.random();
+		g = (float)Math.random();
+		b = (float)Math.random();
+		
+		
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -77,11 +89,21 @@ public class Oiseau {
 	 */
 	public void render(GL2 gl){
 		
+		
+		
+
+		//gl.glDisable(GL.GL_DEPTH_TEST);
+		
+		
+		gl.glColor3f(r,g,b);
 		gl.glTranslatef(x, y, z);
 		gl.glRotatef(angle,0,0,1);
 		for(InterfaceCorps i : membres){
 			i.render(gl);
 		}
+		
+
+		//gl.glEnable(GL.GL_DEPTH_TEST);
 		
 	}
 	

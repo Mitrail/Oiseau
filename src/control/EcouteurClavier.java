@@ -53,12 +53,15 @@ public class EcouteurClavier implements KeyListener {
 		if (e.getKeyChar() == 'a') {
 			for (Oiseau o : glListener.getAo()) {
 				o.orienter(0.0f, 0.0f, -0.1f);
+				
+			
 			}
 
 		}
 		if (e.getKeyChar() == 'e') {
 			for (Oiseau o : glListener.getAo()) {
 				o.orienter(0.0f, 0.0f, 0.1f);
+				
 			}
 		}
 	}

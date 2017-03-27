@@ -70,7 +70,7 @@ public class Corps implements InterfaceCorps {
 	@Override
 	public void render(GL2 gl) {
 
-		gl.glColor3f(1.0f, 0.0f, 0.0f); // RED
+		//gl.glColor3f(1.0f, 0.0f, 0.0f); // RED
 
 		// Face avant
 		gl.glBegin(gl.GL_QUADS);
