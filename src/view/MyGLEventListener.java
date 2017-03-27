@@ -14,7 +14,9 @@ import model.Oiseau;
 
 public class MyGLEventListener implements GLEventListener {
 
-	
+	/**
+	 * La liste d'oiseaux a rendre
+	 */
 	private ArrayList<Oiseau> ao = new ArrayList<Oiseau>();
 	
 	
@@ -70,8 +72,8 @@ public class MyGLEventListener implements GLEventListener {
 	public void updateAngleCam(float x, float y, float z){
 		
 		
-			modx += x;
-			mody += y;
+		modx += x;
+		mody += y;
 		
 		modz += z;
 	}
@@ -103,6 +105,7 @@ public class MyGLEventListener implements GLEventListener {
                 modx, mody, modz,
                 0.0f, 1.0f, 0.0f
         );
+		
 		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
 
@@ -116,8 +119,10 @@ public class MyGLEventListener implements GLEventListener {
 			gl.glPopMatrix();
 			
 			
-			o.battre(0.05f);
+			o.battre(0.1f);
 		}
+		
+		
 
 	}
 

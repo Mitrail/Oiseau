@@ -152,6 +152,8 @@ public class Aile implements InterfaceCorps{
 	 * @param angle float la modification a apporter aux ailes
 	 */
 	public void battre(float angle){
+	
+		
 		
 		if(monte && delta>3.0f){
 			monte = false;
