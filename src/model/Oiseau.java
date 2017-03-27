@@ -12,6 +12,7 @@ import com.jogamp.opengl.GL2;
  * peut faire battre les ailes et la queue
  */
 public class Oiseau {
+	private double temps;
 	
 	//position de l'oiseau
 	private float x, y, z;
@@ -83,6 +84,9 @@ public class Oiseau {
 			i.render(gl);
 		}
 		
+		if (temps > 0 )
+			temps--;
+		
 	}
 	
 	
@@ -96,7 +100,6 @@ public class Oiseau {
 		angle += z*7.5f;
 
 	}
-	
 	
 
 	

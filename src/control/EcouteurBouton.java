@@ -3,6 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Oiseau;
 import view.MyGLEventListener;
 import view.Window2;
 
@@ -54,6 +55,16 @@ public class EcouteurBouton implements ActionListener {
 			glListener.updatePosCam(0.0f, 1.0f, 0.0f);
 		}
 		
+		else if (e.getSource().equals(w.getBtnOrientationDroite())){
+			for (Oiseau o : glListener.getAo()) {
+				o.orienter(0.0f, 0.0f, 0.1f);
+			}
+		}
+		else if (e.getSource().equals(w.getBtnOrientationGauche())){
+			for (Oiseau o : glListener.getAo()) {
+				o.orienter(0.0f, 0.0f, -0.1f);
+			}
+		}
 		else {
 			
 		}
