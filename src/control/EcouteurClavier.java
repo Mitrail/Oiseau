@@ -30,23 +30,23 @@ public class EcouteurClavier implements KeyListener {
 		}
 
 		// Modification de la position de la caméra
-		if (e.getKeyChar() == 'm') {
-			glListener.updatePosCam(1.0f, 0.0f, 0.0f);
-		}
-		if (e.getKeyChar() == 'k') {
-			glListener.updatePosCam(-1.0f, 0.0f, 0.0f);
-		}
-		if (e.getKeyChar() == 'o') {
-			glListener.updatePosCam(0.0f, 0.0f, -1.0f);
-		}
 		if (e.getKeyChar() == 'l') {
-			glListener.updatePosCam(0.0f, 0.0f, 1.0f);
+			glListener.updatePosCam(1.0f, 0.0f, 0.0f); // droite
 		}
-		if (e.getKeyChar() == 'p') {
-			glListener.updatePosCam(0.0f, -1.0f, 0.0f);
+		if (e.getKeyChar() == 'j') {
+			glListener.updatePosCam(-1.0f, 0.0f, 0.0f); // gauche
 		}
 		if (e.getKeyChar() == 'i') {
-			glListener.updatePosCam(0.0f, 1.0f, 0.0f);
+			glListener.updatePosCam(0.0f, 0.0f, -1.0f); // avant
+		}
+		if (e.getKeyChar() == 'k') {
+			glListener.updatePosCam(0.0f, 0.0f, 1.0f); // arrière
+		}
+		if (e.getKeyChar() == 'u') {
+			glListener.updatePosCam(0.0f, -1.0f, 0.0f); // descendre
+		}
+		if (e.getKeyChar() == 'o') {
+			glListener.updatePosCam(0.0f, 1.0f, 0.0f); // monter
 		}
 
 		// Modification 
