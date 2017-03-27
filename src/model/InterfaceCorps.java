@@ -5,8 +5,6 @@ import com.jogamp.opengl.GL2;
 /**
  * Assure que toutes les parties du corps ont une methode de :
  * rendu
- * rotation
- * deplacement
  * @author mitrail
  *
  */

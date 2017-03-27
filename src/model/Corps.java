@@ -92,18 +92,19 @@ public class Corps implements InterfaceCorps {
 
 		// Face haut
 		gl.glBegin(gl.GL_QUADS);
-		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pAvantHautGauche.getX()+o.getX(), pAvantHautGauche.getY()+o.getY(), pAvantHautGauche.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereHautGauche.getX()+o.getX(), pArriereHautGauche.getY()+o.getY(), pArriereHautGauche.getZ()+o.getZ()); // pt0
+		
 		gl.glVertex3f(pArriereHautDroit.getX()+o.getX(), pArriereHautDroit.getY()+o.getY(), pArriereHautDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereHautGauche.getX()+o.getX(), pArriereHautGauche.getY()+o.getY(), pArriereHautGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantHautGauche.getX()+o.getX(), pAvantHautGauche.getY()+o.getY(), pAvantHautGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
 		gl.glEnd();
 
 		// Face bas
 		gl.glBegin(gl.GL_QUADS);
-		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereBasGauche.getX()+o.getX(), pArriereBasGauche.getY()+o.getY(), pArriereBasGauche.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pAvantBasGauche.getX()+o.getX(), pAvantBasGauche.getY()+o.getY(), pAvantBasGauche.getZ()+o.getZ()); // pt0
 		gl.glVertex3f(pAvantBasDroit.getX()+o.getX(), pAvantBasDroit.getY()+o.getY(), pAvantBasDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantBasGauche.getX()+o.getX(), pAvantBasGauche.getY()+o.getY(), pAvantBasGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereBasGauche.getX()+o.getX(), pArriereBasGauche.getY()+o.getY(), pArriereBasGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
 		gl.glEnd();
 
 		//gl.glColor3f(0.0f, 0.0f, 1.0f); // BLUE
@@ -118,10 +119,10 @@ public class Corps implements InterfaceCorps {
 
 		// Face droite
 		gl.glBegin(gl.GL_QUADS);
-		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereHautDroit.getX()+o.getX(), pArriereHautDroit.getY()+o.getY(), pArriereHautDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
 		gl.glVertex3f(pAvantBasDroit.getX()+o.getX(), pAvantBasDroit.getY()+o.getY(), pAvantBasDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereHautDroit.getX()+o.getX(), pArriereHautDroit.getY()+o.getY(), pArriereHautDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
 		gl.glEnd();
 
 	}

@@ -1,15 +1,45 @@
-package pack;
+package model;
 
 import java.util.ArrayList;
 import com.jogamp.opengl.GL2;
 
+import util.Triangle;
+import util.Point3D;
+
+/**
+ * Represente les ailes de l'oiseau
+ * Implement InterfaceCorps pour automatiser le rendu
+ * Les ailes peuvent battre
+ * La creation est modifier selon que l'aile est a droite ou a gauche
+ * @author mitrail
+ *
+ */
 public class Aile implements InterfaceCorps{
+	/**
+	 * Defini si l'aile monte ou descend
+	 */
 	private boolean monte = true;
+	/**
+	 * Hauteur modifier de l'aile
+	 */
 	private float delta  = 0;
 	
+	/**
+	 * L'oiseau auquel l'aile est rattachee
+	 */
 	private Oiseau oiseau; 
+	/**
+	 * Liste des triangles de la partie de l'aile proche de l'oiseau
+	 */
 	private ArrayList<Triangle> liste1 = new ArrayList<Triangle>();
+	/**
+	 * Liste des triangles de la partie de l'aile eloignee de l'oiseau 
+	 */
 	private ArrayList<Triangle> liste2 = new ArrayList<Triangle>();
+	
+	/**
+	 * Coeficient de redimension
+	 */
 	private float coef = 1.0f;
 	
 	/**

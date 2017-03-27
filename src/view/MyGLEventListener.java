@@ -1,4 +1,4 @@
-package pack;
+package view;
 
 import java.util.ArrayList;
 
@@ -10,20 +10,24 @@ import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
 
+import model.Oiseau;
+
 public class MyGLEventListener implements GLEventListener {
 
 	
 	private ArrayList<Oiseau> ao = new ArrayList<Oiseau>();
 	
 	
+	/**
+	 * Position du point observe
+	 */
+	float modx = 0.0f, mody = 0.0f, modz = 0.0f;
 	
-	float modx = 0.0f;
-	float mody = 0.0f;
-	float modz = 0.0f;
+	/**
+	 * Position de la camera
+	 */
+	float modPosx = 0.0f, modPosy = 0.0f, modPosz = 0.0f;
 	
-	float modPosx = 0.0f;
-	float modPosy = 0.0f;
-	float modPosz = 0.0f;
 	
 	public ArrayList<Oiseau> getAo(){
 		return ao;
@@ -64,8 +68,11 @@ public class MyGLEventListener implements GLEventListener {
 	}
 	
 	public void updateAngleCam(float x, float y, float z){
-		modx += x;
-		mody += y;
+		
+		
+			modx += x;
+			mody += y;
+		
 		modz += z;
 	}
 	
@@ -99,6 +106,7 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
 
+		Oiseau oiseau = ao.get(0);
 		
 		
 		for(Oiseau o : ao){
@@ -121,7 +129,7 @@ public class MyGLEventListener implements GLEventListener {
 
 		gl.glMatrixMode(GL2.GL_PROJECTION);
 		gl.glLoadIdentity();
-		glu.gluPerspective(60.0f, (float) width / height, 0.1f, 100.0f);
+		glu.gluPerspective(60.0f, (float) width / height, 0.1f, 1000.0f);
 		gl.glMatrixMode(GL2.GL_MODELVIEW);
 		
 

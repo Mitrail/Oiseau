@@ -15,7 +15,7 @@ public class EcouteurClavier implements KeyListener {
 
 	@Override
 	public void keyPressed(java.awt.event.KeyEvent e) {
-		// Modification de l'angle de la caméra
+		// Modification de l'angle de la camera
 		if (e.getKeyChar() == 'd') {
 			glListener.updateAngleCam(1.0f, 0.0f, 0.0f);
 		}
@@ -29,7 +29,7 @@ public class EcouteurClavier implements KeyListener {
 			glListener.updateAngleCam(0.0f, -1.0f, 0.0f);
 		}
 
-		// Modification de la position de la caméra
+		// Modification de la position de la camï¿½ra
 		if (e.getKeyChar() == 'm') {
 			glListener.updatePosCam(1.0f, 0.0f, 0.0f);
 		}

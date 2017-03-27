@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-
 import com.jogamp.opengl.GL2;
 
 /**
@@ -9,29 +8,43 @@ import com.jogamp.opengl.GL2;
  * @author mitrail
  * Objet representant l'oiseau, 
  * connait les differentes parties du corps
+ * peut se reorienter
+ * peut faire battre les ailes et la queue
  */
 public class Oiseau {
 	
 	//position de l'oiseau
-	private float x; 
-	private float y;
-	private float z;
+	private float x, y, z;
 	
 	//membres pour les acces ponctuels
+	/**
+	 * Aile gauche de l'oiseau
+	 */
 	private Aile ag;
+	/**
+	 * Aile droite de l'oiseau
+	 */
 	private Aile ad;
+	/**
+	 * Queue de l'oiseau
+	 */
 	private Queue q;
+	/**
+	 * Corps de l'oiseau
+	 */
 	private Corps c;
+	/**
+	 * Tete de l'oiseau
+	 */
 	private Tete t;
 	
 	//liste des membres de l'oiseau pour iterer 
 	private ArrayList<InterfaceCorps> membres = new ArrayList<InterfaceCorps>();
 	
-	//orientation de l'oiseau d'un angle sur chaque axe
-	private float ox;			
-	private float oy;
-	private float oz;
-	private float angle = 0.0f;
+	/**
+	 * orientation de l'oiseau d'un angle sur chaque axe
+	 */
+	private float ox, oy, oz, angle = 0.0f;
 	
 	/**
 	 * Creer un nouvel oiseau a une position donnee
@@ -44,11 +57,12 @@ public class Oiseau {
 		this.y = y;
 		this.z = z;
 		
+
+		t = new Tete(this);
 		ag = new Aile(this,true);
 		ad = new Aile(this,false);
 		q  = new Queue(this);
 		c = new Corps(this);
-		t = new Tete(this);
 
 		membres.add(ag);
 		membres.add(ad);
