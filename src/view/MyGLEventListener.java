@@ -14,26 +14,35 @@ import model.Oiseau;
 
 public class MyGLEventListener implements GLEventListener {
 
+	
 	private ArrayList<Oiseau> ao = new ArrayList<Oiseau>();
-
-	float modx = 0.0f;
-	float mody = 0.0f;
-	float modz = 0.0f;
-
-	float modPosx = 0.0f;
-	float modPosy = 0.0f;
-	float modPosz = 0.0f;
-
-	public ArrayList<Oiseau> getAo() {
+	
+	
+	/**
+	 * Position du point observe
+	 */
+	float modx = 0.0f, mody = 0.0f, modz = 0.0f;
+	
+	/**
+	 * Position de la camera
+	 */
+	float modPosx = 0.0f, modPosy = 0.0f, modPosz = 0.0f;
+	
+	
+	public ArrayList<Oiseau> getAo(){
 		return ao;
 	}
 
 	@Override
 	public void init(GLAutoDrawable drawable) {
+		
+		ao.add(new Oiseau(0,0,0));
+		
+	ao.add(new Oiseau(-25,0,-25));
+	ao.add(new Oiseau(25,0,-25));
+	ao.add(new Oiseau(5, 10, 7));
 
-		ao.add(new Oiseau(0, 0, 0));
-		ao.add(new Oiseau(-25, 0, -25));
-		ao.add(new Oiseau(25, 0, -25));
+	ao.add(new Oiseau(-15,-9,-20));
 
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -55,16 +64,19 @@ public class MyGLEventListener implements GLEventListener {
 		gl.glMateriali(GL2.GL_FRONT_AND_BACK, GL2.GL_SHININESS, 90);
 
 		gl.glMaterialfv(GL2.GL_FRONT_AND_BACK, GL2.GL_SPECULAR, material_specular, 0);
-
+		
 	}
-
-	public void updateAngleCam(float x, float y, float z) {
-		modx += x;
-		mody += y;
+	
+	public void updateAngleCam(float x, float y, float z){
+		
+		
+			modx += x;
+			mody += y;
+		
 		modz += z;
 	}
-
-	public void updatePosCam(float x, float y, float z) {
+	
+	public void updatePosCam(float x, float y, float z){
 		modPosx += x;
 		modPosy += y;
 		modPosz += z;
@@ -85,20 +97,25 @@ public class MyGLEventListener implements GLEventListener {
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
 		gl.glLoadIdentity();
-		// glu.gluLookAt(camera[0], camera[1], camera[2], 0.0f, 0.0f, 0.0f,
-		// 0.0f, 1.0f, 0.0f);
-		glu.gluLookAt(camera[0] + modPosx, camera[1] + modPosy, camera[2] + modPosz, modx, mody, modz, 0.0f, 1.0f,
-				0.0f);
-		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);
-		getClass();
+		//glu.gluLookAt(camera[0], camera[1], camera[2], 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		glu.gluLookAt(
+                camera[0]+modPosx, camera[1]+modPosy, camera[2]+modPosz,
+                modx, mody, modz,
+                0.0f, 1.0f, 0.0f
+        );
+		gl.glPolygonMode(GL.GL_FRONT, GL2GL3.GL_LINE);getClass();
 		gl.glColor3f(1.0f, 0.0f, 0.0f);
 
-		for (Oiseau o : ao) {
+		Oiseau oiseau = ao.get(0);
+		
+		
+		for(Oiseau o : ao){
 
 			gl.glPushMatrix();
 			o.render(gl);
 			gl.glPopMatrix();
-
+			
+			
 			o.battre(0.05f);
 		}
 
@@ -112,8 +129,9 @@ public class MyGLEventListener implements GLEventListener {
 
 		gl.glMatrixMode(GL2.GL_PROJECTION);
 		gl.glLoadIdentity();
-		glu.gluPerspective(60.0f, (float) width / height, 0.1f, 100.0f);
+		glu.gluPerspective(60.0f, (float) width / height, 0.1f, 1000.0f);
 		gl.glMatrixMode(GL2.GL_MODELVIEW);
+		
 
 	}
 

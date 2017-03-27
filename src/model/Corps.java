@@ -9,17 +9,28 @@ import util.Point3D;
 
 public class Corps implements InterfaceCorps {
 
-	// position haut-bas, gauche-droite, avant-arri�re
+	/**
+	 * position des points communs a plusieurs triangles
+	 */
 	private float top, bottom, front, back, left, right;
 
+	/**
+	 * ensemble des points de l'oiseau
+	 */
 	private Point3D
-	// Points de la face avant
+	//points de la face avant
 	pAvantHautGauche, pAvantBasGauche, pAvantHautDroit,pAvantBasDroit,
 
 	// Points de la face arri�re
 	pArriereHautGauche, pArriereBasGauche,pArriereHautDroit,pArriereBasDroit;
 
+	/**
+	 * l'Oiseau auquel le membre est rattaché
+	 */
 	private Oiseau o;
+	/**
+	 * la liste des points pour iterer
+	 */
 	private List<Point3D> listePoints = new ArrayList<Point3D>();
 
 	public Corps(Oiseau o) {
@@ -81,18 +92,19 @@ public class Corps implements InterfaceCorps {
 
 		// Face haut
 		gl.glBegin(gl.GL_QUADS);
-		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pAvantHautGauche.getX()+o.getX(), pAvantHautGauche.getY()+o.getY(), pAvantHautGauche.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereHautGauche.getX()+o.getX(), pArriereHautGauche.getY()+o.getY(), pArriereHautGauche.getZ()+o.getZ()); // pt0
+		
 		gl.glVertex3f(pArriereHautDroit.getX()+o.getX(), pArriereHautDroit.getY()+o.getY(), pArriereHautDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereHautGauche.getX()+o.getX(), pArriereHautGauche.getY()+o.getY(), pArriereHautGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantHautGauche.getX()+o.getX(), pAvantHautGauche.getY()+o.getY(), pAvantHautGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
 		gl.glEnd();
 
 		// Face bas
 		gl.glBegin(gl.GL_QUADS);
-		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereBasGauche.getX()+o.getX(), pArriereBasGauche.getY()+o.getY(), pArriereBasGauche.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pAvantBasGauche.getX()+o.getX(), pAvantBasGauche.getY()+o.getY(), pAvantBasGauche.getZ()+o.getZ()); // pt0
 		gl.glVertex3f(pAvantBasDroit.getX()+o.getX(), pAvantBasDroit.getY()+o.getY(), pAvantBasDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantBasGauche.getX()+o.getX(), pAvantBasGauche.getY()+o.getY(), pAvantBasGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereBasGauche.getX()+o.getX(), pArriereBasGauche.getY()+o.getY(), pArriereBasGauche.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
 		gl.glEnd();
 
 		//gl.glColor3f(0.0f, 0.0f, 1.0f); // BLUE
@@ -107,19 +119,15 @@ public class Corps implements InterfaceCorps {
 
 		// Face droite
 		gl.glBegin(gl.GL_QUADS);
-		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereHautDroit.getX()+o.getX(), pArriereHautDroit.getY()+o.getY(), pArriereHautDroit.getZ()+o.getZ()); // pt0
-		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
 		gl.glVertex3f(pAvantBasDroit.getX()+o.getX(), pAvantBasDroit.getY()+o.getY(), pAvantBasDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereBasDroit.getX()+o.getX(), pArriereBasDroit.getY()+o.getY(), pArriereBasDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pArriereHautDroit.getX()+o.getX(), pArriereHautDroit.getY()+o.getY(), pArriereHautDroit.getZ()+o.getZ()); // pt0
+		gl.glVertex3f(pAvantHautDroit.getX()+o.getX(), pAvantHautDroit.getY()+o.getY(), pAvantHautDroit.getZ()+o.getZ()); // pt0
 		gl.glEnd();
 
 	}
 
-	@Override
-	public void rotate(float angle, float x, float y, float z) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	
 }
