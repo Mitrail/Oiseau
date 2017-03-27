@@ -76,20 +76,20 @@ public class Queue implements InterfaceCorps {
 
 		// top
 		pGauche.add(new Triangle(topLeft, rearLeft, topRight));
-		// int
+		// interieur
 		pGauche.add(new Triangle(botLeft, rearLeft, topLeft));
-		// bot
+		// bottom
 		pGauche.add(new Triangle(botRight, rearLeft, botLeft));
-		// ext
+		// exterieur
 		pGauche.add(new Triangle(botRight, topRight, rearLeft));
 
 		// top
 		pDroite.add(new Triangle(rearRight, topRight, topLeft));
-		// int
+		// interieur
 		pDroite.add(new Triangle(topRight, rearRight, botRight));
-		// bot
+		// bottom
 		pDroite.add(new Triangle(botRight, rearRight, botLeft));
-		// ext
+		// exterieur
 		pDroite.add(new Triangle(topLeft, botLeft, rearRight));
 
 	}

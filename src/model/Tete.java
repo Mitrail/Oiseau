@@ -43,9 +43,9 @@ public class Tete implements InterfaceCorps {
 	public Tete(Oiseau o) {
 		this.oiseau = o;
 		beg = 10.0f;
-		end = 7.0f;
-		endR = 1.0f;
-		endL = -1.0f;
+		end = 8.0f;
+		endR = 0.9f;
+		endL = -0.9f;
 		endT = 1.0f;
 
 		begin = new Point3D(0.0f + oiseau.getX(), -1.0f + oiseau.getY(), beg + oiseau.getZ());
@@ -79,18 +79,18 @@ public class Tete implements InterfaceCorps {
 	 *            l'objet effectuant les positionnement des points
 	 */
 	public void render(GL2 gl) {
-		// push car Lune pas affectee par l'angle de la terre autour d'elle meme
 		gl.glPushMatrix();
 		
-		
+		//TETE
 		gl.glTranslatef(0 + oiseau.getX(), 0 + oiseau.getY(), 7 + oiseau.getZ());
 		gl.glColor3f(0.0f, 0.0f, 1.0f);
 		glut.glutSolidSphere(2, 50, 50);
 
-		gl.glTranslatef(1, 0, 1);
+		//YEUX
 		gl.glColor3f(1.0f, 1.0f, 1.0f);
+		
+		gl.glTranslatef(1, 0, 1.5f);
 		glut.glutSolidSphere(0.25, 10, 10);
-
 		gl.glTranslatef(-2, 0, 0);
 		glut.glutSolidSphere(0.25, 10, 10);
 		
@@ -98,6 +98,7 @@ public class Tete implements InterfaceCorps {
 		
 		gl.glPopMatrix();
 
+		//BEC
 		gl.glColor3f(1.0f, 1.0f, 0.0f);
 
 		for (Triangle t : liste) {

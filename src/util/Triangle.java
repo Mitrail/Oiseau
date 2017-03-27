@@ -6,8 +6,8 @@ import com.jogamp.opengl.GL2;
 import model.Oiseau;
 
 /**
- * Cette classe représente un triangle à afficher dans un espace en 3
- * dimensions. L'objet Triangle est caractérisé par 3 Point3D
+ * Cette classe represente un triangle e afficher dans un espace en 3
+ * dimensions. L'objet Triangle est caracterise par 3 Point3D
  * 
  * @author Nico
  *
@@ -20,45 +20,18 @@ public class Triangle {
 	private Point3D p1;
 
 	/**
-	 * deuxième point
+	 * deuxieme point
 	 */
 	private Point3D p2;
 
 	/**
-	 * troisième point
+	 * troisieme point
 	 */
 	private Point3D p3;
 
-	/**
-	 * Constructeur prenant 9 coordonnées en argument
-	 * 
-	 * @param ax
-	 *            Point3D p1 : x
-	 * @param ay
-	 *            Point3D p1 : y
-	 * @param az
-	 *            Point3D p1 : z
-	 * @param bx
-	 *            Point3D p2 : x
-	 * @param by
-	 *            Point3D p2 : y
-	 * @param bz
-	 *            Point3D p2 : z
-	 * @param cx
-	 *            Point3D p3 : x
-	 * @param cy
-	 *            Point3D p3 : y
-	 * @param cz
-	 *            Point3D p3 : z
-	 */
-	public Triangle(float ax, float ay, float az, float bx, float by, float bz, float cx, float cy, float cz) {
-		p1 = new Point3D(ax, ay, az);
-		p2 = new Point3D(bx, by, bz);
-		p3 = new Point3D(cx, cy, cz);
-	}
 
 	/**
-	 * Constructeur prenant 3 Point3D en argument
+	 * Constructeur prenant 3 Point3D en argument dans l'ordre trigonometrique
 	 * 
 	 * @param p1
 	 *            Point3D 1
@@ -74,7 +47,7 @@ public class Triangle {
 	}
 
 	/**
-	 * Méthode permettant d'afficher l'objet Triangle dans l'espace
+	 * Methode permettant d'afficher l'objet Triangle dans l'espace
 	 * 
 	 * @param gl
 	 */
@@ -87,22 +60,22 @@ public class Triangle {
 	}
 
 	/**
-	 * Méthode permettant d'afficher l'objet Triangle dans l'espace selon les
-	 * coordonnées de l'oiseau
+	 * Methode permettant d'afficher l'objet Triangle dans l'espace selon les
+	 * coordonnees de l'oiseau
 	 * 
 	 * @param gl
 	 * @param o
 	 */
 	public void render(GL2 gl, Oiseau o) {
 		gl.glBegin(GL.GL_TRIANGLES);
-		gl.glVertex3f(p1.getX() + o.getX(), p1.getY() + o.getY(), p1.getZ() + o.getZ());
-		gl.glVertex3f(p2.getX() + o.getX(), p2.getY() + o.getY(), p2.getZ() + o.getZ());
-		gl.glVertex3f(p3.getX() + o.getX(), p3.getY() + o.getY(), p3.getZ() + o.getZ());
+		gl.glVertex3f(p1.getX() , p1.getY() , p1.getZ() );
+		gl.glVertex3f(p2.getX() , p2.getY() , p2.getZ() );
+		gl.glVertex3f(p3.getX() , p3.getY() , p3.getZ() );
 		gl.glEnd();
 	}
 
 	/**
-	 * Méthode permettant de déplacer le triangle. Effectue une translation sur
+	 * Methode permettant de deplacer le triangle. Effectue une translation sur
 	 * les 3 axes
 	 * 
 	 * @param x
@@ -124,7 +97,7 @@ public class Triangle {
 
 	@Override
 	/**
-	 * Méthode toString de classe affichant les coordonnées de chaque Point3D du
+	 * Methode toString de classe affichant les coordonnees de chaque Point3D du
 	 * triangle
 	 */
 	public String toString() {
