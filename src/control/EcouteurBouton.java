@@ -65,6 +65,17 @@ public class EcouteurBouton implements ActionListener {
 				o.orienter(0.0f, 0.0f, -0.1f);
 			}
 		}
+		
+		else if (e.getSource().equals(w.getBtnOrientationBecBaisse())){
+			for (Oiseau o : glListener.getAo()) {
+				o.orienter(0.0f, -0.1f, 0.0f);
+			}
+		}
+		else if (e.getSource().equals(w.getBtnOrientationBecLeve())){
+			for (Oiseau o : glListener.getAo()) {
+				o.orienter(0.0f, 0.1f, 0.0f);
+			}
+		}
 		else {
 			
 		}

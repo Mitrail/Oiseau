@@ -25,7 +25,7 @@ public class Window2 extends JFrame{
 
 	private JFrame frame;
 	private JPanel panelCanvas,panelButton;
-	private JButton btnD,btnZ,btnQ,btnS,btnAvant,btnArriere,btnGauche,btnDroite,btnHaut,btnBas,btnOrientationGauche,btnOrientationDroite;
+	private JButton btnD,btnZ,btnQ,btnS,btnAvant,btnArriere,btnGauche,btnDroite,btnHaut,btnBas,btnOrientationGauche,btnOrientationDroite,btnOrientationBecLeve,btnOrientationBecBaisse;
 	private JLabel lblModifierLaPosition;
 
 
@@ -161,12 +161,28 @@ public class Window2 extends JFrame{
 		
 		btnOrientationDroite = new JButton("Rotation de la patrouille sur la droite - E");
 		btnOrientationDroite.setBounds(271, 351, 253, 40);
+		btnOrientationDroite.addActionListener(new EcouteurBouton(this,glListener));
 		panelButton.add(btnOrientationDroite);
 		
 		JLabel lblTournerLesOiseaux = new JLabel("Tourner les oiseaux");
 		lblTournerLesOiseaux.setBounds(6, 306, 204, 33);
 		panelButton.add(lblTournerLesOiseaux);
-		btnOrientationDroite.addActionListener(new EcouteurBouton(this,glListener));
+		
+		btnOrientationBecLeve = new JButton("Baisser le bec de la patrouille - C");
+		btnOrientationBecLeve.addActionListener(new EcouteurBouton(this,glListener));
+		btnOrientationBecLeve.setBounds(265, 485, 253, 40);
+		panelButton.add(btnOrientationBecLeve);
+		
+		btnOrientationBecBaisse = new JButton("Lever le bec de la patrouille - W");
+		btnOrientationBecBaisse.setBounds(6, 485, 253, 40);
+		btnOrientationBecBaisse.addActionListener(new EcouteurBouton(this,glListener));
+		panelButton.add(btnOrientationBecBaisse);
+		
+		JLabel lblLeverBaisser = new JLabel("Baisser le bec de la patrouille - C");
+		lblLeverBaisser.setBounds(6, 442, 166, 16);
+		panelButton.add(lblLeverBaisser);
+		
+
 		
 	}
 	
@@ -260,6 +276,12 @@ public class Window2 extends JFrame{
 	public JButton getBtnOrientationDroite() {
 		return btnOrientationDroite;
 	}
-	
-	
+
+	public JButton getBtnOrientationBecLeve() {
+		return btnOrientationBecLeve;
+	}
+
+	public JButton getBtnOrientationBecBaisse() {
+		return btnOrientationBecBaisse;
+	}
 }

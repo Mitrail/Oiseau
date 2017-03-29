@@ -52,9 +52,7 @@ public class EcouteurClavier implements KeyListener {
 		// Modification
 		if (e.getKeyChar() == 'a') {
 			for (Oiseau o : glListener.getAo()) {
-				o.orienter(0.0f, 0.0f, -0.1f);
-				
-			
+				o.orienter(0.0f, 0.0f, -0.1f);			
 			}
 
 		}
