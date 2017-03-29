@@ -53,7 +53,7 @@ public class Oiseau {
 	/**
 	 * orientation de l'oiseau d'un angle sur chaque axe
 	 */
-	private float ox, oy, oz, angle = 0.0f;
+	private float anglex = 0.0f, angley, anglez;
 
 	/**
 	 * Couleurs RGB de l'oiseau
@@ -104,7 +104,8 @@ public class Oiseau {
 
 		gl.glColor3f(r, g, b);
 		gl.glTranslatef(x, y, z);
-		gl.glRotatef(angle, 0, 0, 1);
+		gl.glRotatef(anglez, 0, 0, 1);
+		gl.glRotatef(angley, 1, 0, 0);
 		for (InterfaceCorps i : membres) {
 			i.render(gl);
 		}
@@ -117,10 +118,9 @@ public class Oiseau {
 	 * Deplace le centre de l'oiseau
 	 */
 	public void orienter(float x, float y, float z) {
-		this.x += x;
-		this.y += y;
-		// this.z += z;
-		angle += z * 7.5f;
+		anglex += x * 7.5f;
+		angley += y * 7.5f;
+		anglez += z * 7.5f;
 
 	}
 

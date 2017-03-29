@@ -38,13 +38,16 @@ public class MyGLEventListener implements GLEventListener {
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		
-		ao.add(new Oiseau(0,0,0));
+	ao.add(new Oiseau(0,0,0));
 		
 	ao.add(new Oiseau(-25,0,-25));
 	ao.add(new Oiseau(25,0,-25));
 	ao.add(new Oiseau(5, 10, 7));
 
 	ao.add(new Oiseau(-15,-9,-20));
+
+	ao.add(new Oiseau(-12,12,-30));
+
 
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
